@@ -37,14 +37,6 @@ typedef struct Node
 
 //-----------------------------------------------------------------------------
 
-typedef struct Tree_info
-{
-    int tree_depth;
-    int curr_depth;
-} Tree_info;
-
-//-----------------------------------------------------------------------------
-
 Node *create_node          ();
 
 void  insert_node          (Node *Root, int value);
@@ -57,13 +49,7 @@ void  print_tree_inorder   (Node *Root);
 
 void  print_tree_postorder (Node *Root);
 
-void  tree_dtor            (Node *Root);
-
-void  check_empty_tree     (Node *Root);
-
-void  menu                 (Node *Root, Tree_info *Info);
-
-void  find_depth           (Node *Root, Tree_info *Info);
+void  menu                 (Node *Root);
 
 //-----------------------------------------------------------------------------
 
