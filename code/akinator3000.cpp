@@ -35,10 +35,21 @@ Node *create_node ()
         New_node->Left   = NULL;
         New_node->Right  = NULL;
 
-        New_node->value = 0;
+        New_node->name = (char*) calloc (LM(NAME_LEN), sizeof (char));
     }
 
     return New_node;
+}
+
+//-----------------------------------------------------------------------------
+
+Node *create_root (char *name)
+{
+    Node *Root = create_node ();
+
+    Root->name = name;
+
+    return Root;
 }
 
 //-----------------------------------------------------------------------------

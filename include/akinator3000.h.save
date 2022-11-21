@@ -17,7 +17,7 @@
 
 #define SZ(suffix) SIZE_OF_##suffix
 
-#define L(suffix)  LIMIT_##suffix
+#define LM(suffix) LIMIT_##suffix
 
 #define F(suffix)  FLAG_##suffix
 
@@ -32,8 +32,15 @@ typedef struct Node
     Node *Parent;
     Node *Left;
     Node *Right;
-    int   value;
+    char  name;
 } Node;
+
+//-----------------------------------------------------------------------------
+
+enum NODE_INFO
+{
+    LM(NAME_LEN) = 300,
+};
 
 //-----------------------------------------------------------------------------
 
@@ -49,7 +56,13 @@ void  print_tree_inorder   (Node *Root);
 
 void  print_tree_postorder (Node *Root);
 
-void  menu                 (Node *Root);
+void  tree_dtor            (Node *Root);
+
+void  check_empty_tree     (Node *Root);
+
+void  menu                 (Node *Root, Tree_info *Info);
+
+void  find_depth           (Node *Root, Tree_info *Info);
 
 //-----------------------------------------------------------------------------
 
