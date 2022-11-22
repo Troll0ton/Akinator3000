@@ -5,14 +5,28 @@
 int main ()
 {
     Node *Root = create_root ("aboba");
-    
+
     Tree_info Info = { 0 };
-    
-    Info.tree_file = fopen ("../dump/tree.txt", "w+");
-    
-    insert_node ("amogus", Root, Left);
+
+    Info.tree_file = fopen ("../files/tree.txt", "w+");
+
+    //-----------------------------------------------------------------------------
+
+    insert_node ("amogus", Root, LEFT);
+    insert_node ("grigorievich", Root, RIGHT);
+
+    Node *Cur_cell = find_node (Root, "amogus");
+
+    insert_node ("MOSCOW", Cur_cell, RIGHT);
+    insert_node ("BERLIN", Cur_cell, LEFT);
+
+    print_tree (Root, &Info);
+
+    //-----------------------------------------------------------------------------
 
     tree_dtor (Root);
+
+    fclose (Info.tree_file);
 
     return 0;
 }
@@ -60,7 +74,8 @@ Node *create_root (char *name)
 
 void insert_node (char *name, Node *Parent, int side)
 {
-    Node *New_node  = create_node ();
+    Node *New_node = create_node ();
+    New_node->name = name;
 
     if(side == LEFT)
     {
@@ -118,30 +133,38 @@ Node *find_node (Node *Curr_node, char *name)
 
 //-----------------------------------------------------------------------------
 
-void *print_tree (Node *Curr_node)
+void *print_tree (Node *Curr_node, Tree_info *Info)
 {
     if(Curr_node)
-    {   
-        tprint("\n");
-        
-        for(int i = 0; i < num_tab; i++)
+    {
+        for(int i = 0; i < Info->N(TABS); i++)
         {
             tprint(" ");
         }
-        
+
         tprint("{%s", Curr_node->name);
     }
-    
+
     if(Curr_node->Left)
     {
-        print_tree (Curr_node->Left);
+        Info->N(TABS) += 4;
+
+        tprint("\n");
+
+        print_tree (Curr_node->Left, Info);
     }
-    
-    if(Curr_node->Left)
+
+    if(Curr_node->Right)
     {
-        print_tree (Curr_node->Left);
+        Info->N(TABS) += 4;
+
+        tprint("\n");
+
+        print_tree (Curr_node->Right, Info);
     }
-    
+
+    Info->N(TABS) -= 4;
+
     tprint("}\n");
 }
 
@@ -151,7 +174,7 @@ void print_tree_preorder (Node *Root)
 {
     Node *Curr_node = Root;
 
-    printf ("(%d", Curr_node->value);
+    printf ("(%d", Curr_node->name);
 
     if(Curr_node->Left)  print_tree_preorder (Curr_node->Left);
     if(Curr_node->Right) print_tree_preorder (Curr_node->Right);
@@ -169,7 +192,7 @@ void print_tree_inorder (Node *Root)
 
     if(Curr_node->Left)  print_tree_inorder (Curr_node->Left);
 
-    printf ("%d", Curr_node->value);
+    printf ("%d", Curr_node->name);
 
     if(Curr_node->Right) print_tree_inorder (Curr_node->Right);
 
@@ -188,7 +211,7 @@ void print_tree_postorder (Node *Root)
 
     if(Curr_node->Right) print_tree_postorder (Curr_node->Right);
 
-    printf ("%d)", Curr_node->value);
+    printf ("%d)", Curr_node->name);
 }
 
 //-----------------------------------------------------------------------------

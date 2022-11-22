@@ -11,7 +11,7 @@
 
 //-----------------------------------------------------------------------------
 
-#define tprint(...) fprintf (file_out, __VA_ARGS__)
+#define tprint(...) fprintf (Info->tree_file, __VA_ARGS__)
 
 //-----------------------------------------------------------------------------
 
@@ -44,6 +44,7 @@ typedef struct Node
 typedef struct Tree_info
 {
     FILE *tree_file;
+    int   N(TABS);
 } Tree_info;
 
 //-----------------------------------------------------------------------------
@@ -69,11 +70,13 @@ Node *create_root          (char *name);
 
 void  insert_node          (char *name, Node *Parent, int side);
 
-void *print_tree           (Node *Curr_node, FILE *file_out);
+void *print_tree           (Node *Curr_node, Tree_info *Info);
 
 void  get_node             (Node *Root);
 
 void  print_tree_preorder  (Node *Root);
+
+Node *find_node            (Node *Curr_node, char *name);
 
 void  print_tree_inorder   (Node *Root);
 

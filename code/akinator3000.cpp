@@ -8,11 +8,21 @@ int main ()
 
     Tree_info Info = { 0 };
 
-    Info.tree_file = fopen ("../dump/tree.txt", "w+");
+    Info.tree_file = fopen ("../files/tree.txt", "w+");
+
+    //-----------------------------------------------------------------------------
 
     insert_node ("amogus", Root, LEFT);
+    insert_node ("grigorievich", Root, RIGHT);
 
-    print_tree (Root, Info.tree_file);
+    Node *Cur_cell = find_node (Root, "amogus");
+
+    insert_node ("MOSCOW", Cur_cell, RIGHT);
+    insert_node ("BERLIN", Cur_cell, LEFT);
+
+    print_tree (Root, &Info);
+
+    //-----------------------------------------------------------------------------
 
     tree_dtor (Root);
 
@@ -64,7 +74,8 @@ Node *create_root (char *name)
 
 void insert_node (char *name, Node *Parent, int side)
 {
-    Node *New_node  = create_node ();
+    Node *New_node = create_node ();
+    New_node->name = name;
 
     if(side == LEFT)
     {
@@ -122,28 +133,40 @@ Node *find_node (Node *Curr_node, char *name)
 
 //-----------------------------------------------------------------------------
 
-void *print_tree (Node *Curr_node, FILE *file_out)
+void *print_tree (Node *Curr_node, Tree_info *Info)
 {
-    if(Curr_node)
+    int a = 0;
+
+    int *N(SPACES) = &a;
+
+    for(int i = 0; i < Info->N(TABS); i++)
+    {
+        tprint(" ");
+    }
+
+    tprint("{%s", Curr_node->name);
+
+    Info->N(TABS) += 4;
+
+    if(Curr_node->Left)
     {
         tprint("\n");
-
-        for(int i = 0; i < 0; i++)
-        {
-            tprint(" ");
-        }
-
-        tprint("{%s", Curr_node->name);
+        N(SPACES) = &Info->N(TABS);
+        print_tree (Curr_node->Left, Info);
     }
 
-    if(Curr_node->Left)
+    if(Curr_node->Right)
     {
-        print_tree (Curr_node->Left, file_out);
+        tprint("\n");
+        N(SPACES) = &Info->N(TABS);
+        print_tree (Curr_node->Right, Info);
     }
 
-    if(Curr_node->Left)
+    Info->N(TABS) -= 4;
+
+    for(int i = 0; i < *N(SPACES); i++)
     {
-        print_tree (Curr_node->Left, file_out);
+        tprint(" ");
     }
 
     tprint("}\n");
