@@ -11,6 +11,10 @@
 
 //-----------------------------------------------------------------------------
 
+#define tprint(...) fprintf (file_out, __VA_ARGS__)
+
+//-----------------------------------------------------------------------------
+
 #define N(suffix)  NUM_OF_##suffix
 
 #define SG(suffix) SIGNATURE_##suffix
@@ -32,8 +36,23 @@ typedef struct Node
     Node *Parent;
     Node *Left;
     Node *Right;
-    char  name;
+    char *name;
 } Node;
+
+//-----------------------------------------------------------------------------
+
+typedef struct Tree_info
+{
+    FILE *tree_file;
+} Tree_info;
+
+//-----------------------------------------------------------------------------
+
+enum SIDES
+{
+    LEFT,
+    RIGHT,
+};
 
 //-----------------------------------------------------------------------------
 
@@ -46,9 +65,11 @@ enum NODE_INFO
 
 Node *create_node          ();
 
-Node *init_root            (char *name);
+Node *create_root          (char *name);
 
-void  insert_node          (Node *Root, int value);
+void  insert_node          (char *name, Node *Parent, int side);
+
+void *print_tree           (Node *Curr_node, FILE *file_out);
 
 void  get_node             (Node *Root);
 
@@ -58,7 +79,7 @@ void  print_tree_inorder   (Node *Root);
 
 void  print_tree_postorder (Node *Root);
 
-void  tree_dtor            (Node *Root);
+void  tree_dtor            (Node *Curr_node);
 
 void  check_empty_tree     (Node *Root);
 
