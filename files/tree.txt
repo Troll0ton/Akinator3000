@@ -1,9 +1,0 @@
-{aboba
-    {amogus
-        {BERLIN}
-
-        {MOSCOW}
-    }
-
-    {grigorievich}
-}

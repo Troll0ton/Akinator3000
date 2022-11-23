@@ -11,23 +11,15 @@
 
 //-----------------------------------------------------------------------------
 
-#define tprint(...) fprintf (Info->tree_file, __VA_ARGS__)
+#define tprint(...) fprintf (Info->tree_out_file, __VA_ARGS__)
 
 //-----------------------------------------------------------------------------
 
 #define N(suffix)  NUM_OF_##suffix
 
-#define SG(suffix) SIGNATURE_##suffix
+//-----------------------------------------------------------------------------
 
-#define SZ(suffix) SIZE_OF_##suffix
-
-#define LM(suffix) LIMIT_##suffix
-
-#define F(suffix)  FLAG_##suffix
-
-#define E(suffix)  ERROR_##suffix
-
-#define P(suffix)  POISON_##suffix
+#define DELETED_PAR -1
 
 //-----------------------------------------------------------------------------
 
@@ -43,8 +35,13 @@ typedef struct Node
 
 typedef struct Tree_info
 {
-    FILE *tree_file;
-    int   N(TABS);
+    FILE *tree_in_file;
+    FILE *tree_out_file;
+    int   N(CURR_LINE);
+    Line *Text;
+    File *File_input;
+    Node *Root;
+    Node *Curr_parent;
 } Tree_info;
 
 //-----------------------------------------------------------------------------
@@ -57,38 +54,38 @@ enum SIDES
 
 //-----------------------------------------------------------------------------
 
-enum NODE_INFO
+enum TREE_INFO
 {
-    LM(NAME_LEN) = 300,
+    MAX_LEN = 100,
 };
 
 //-----------------------------------------------------------------------------
 
-Node *create_node          ();
+Node      *create_node          ();
 
-Node *create_root          (char *name);
+Node      *create_root          (char *name, Tree_info *Info);
 
-void  insert_node          (char *name, Node *Parent, int side);
+Node      *insert_node          (char *name, Node *Parent, int side);
 
-void *print_tree           (Node *Curr_node, Tree_info *Info);
+void      *print_tree           (Node *Curr_node, Tree_info *Info);
 
-void  get_node             (Node *Root);
+void       read_tree            (Tree_info *Info);
 
-void  print_tree_preorder  (Node *Root);
+void       get_node             (Node *Root);
 
-Node *find_node            (Node *Curr_node, char *name);
+void       print_tree_preorder  (Node *Root);
 
-void  print_tree_inorder   (Node *Root);
+Tree_info *tree_info_ctor       ();
 
-void  print_tree_postorder (Node *Root);
+void       tree_info_dtor       (Tree_info *Info);
 
-void  tree_dtor            (Node *Curr_node);
+Node      *find_node            (Node *Curr_node, char *name);
 
-void  check_empty_tree     (Node *Root);
+void       print_tree_inorder   (Node *Root);
 
-void  menu                 (Node *Root, Tree_info *Info);
+void       print_tree_postorder (Node *Root);
 
-void  find_depth           (Node *Root, Tree_info *Info);
+void       tree_dtor            (Node *Curr_node);
 
 //-----------------------------------------------------------------------------
 

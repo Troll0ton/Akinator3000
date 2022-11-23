@@ -2,33 +2,38 @@
 
 //-----------------------------------------------------------------------------
 
-int main ()
+Tree_info *tree_info_ctor ()
 {
-    Node *Root = create_root ("aboba");
+    Tree_info *Info = (Tree_info*) calloc (1, sizeof (Tree_info));
 
-    Tree_info Info = { 0 };
+    Info->Root        = NULL;
+    Info->Curr_parent = NULL;
 
-    Info.tree_file = fopen ("../files/tree.txt", "w+");
+    Info->tree_in_file  = fopen ("../files/tree_in.txt",  "r");
+    Info->tree_out_file = fopen ("../files/tree_out.txt", "w+");
 
-    //-----------------------------------------------------------------------------
+    Info->File_input = file_reader (Info->tree_in_file);
+    Info->Text = lines_separator (Info->File_input);
 
-    insert_node ("amogus", Root, LEFT);
-    insert_node ("grigorievich", Root, RIGHT);
+    Info->N(CURR_LINE) = 0;
 
-    Node *Cur_cell = find_node (Root, "amogus");
+    return Info;
+}
 
-    insert_node ("MOSCOW", Cur_cell, RIGHT);
-    insert_node ("BERLIN", Cur_cell, LEFT);
+//-----------------------------------------------------------------------------
 
-    print_tree (Root, &Info);
+void tree_info_dtor (Tree_info *Info)
+{
+    Info->Root = NULL;
 
-    //-----------------------------------------------------------------------------
+    fclose (Info->tree_in_file);
+    fclose (Info->tree_out_file);
 
-    tree_dtor (Root);
+    clear_mem (Info->Text, Info->File_input);
 
-    fclose (Info.tree_file);
+    Info->N(CURR_LINE) = DELETED_PAR;
 
-    return 0;
+    free (Info);
 }
 
 //-----------------------------------------------------------------------------
@@ -48,7 +53,7 @@ Node *create_node ()
         New_node->Left   = NULL;
         New_node->Right  = NULL;
 
-        New_node->name = (char*) calloc (LM(NAME_LEN), sizeof (char));
+        New_node->name = (char*) calloc (MAX_LEN, sizeof (char));
 
         if(New_node->name == NULL)
         {
@@ -61,9 +66,11 @@ Node *create_node ()
 
 //-----------------------------------------------------------------------------
 
-Node *create_root (char *name)
+Node *create_root (char *name, Tree_info *Info)
 {
     Node *Root = create_node ();
+
+    Info->Root = Root;
 
     Root->name = name;
 
@@ -72,7 +79,7 @@ Node *create_root (char *name)
 
 //-----------------------------------------------------------------------------
 
-void insert_node (char *name, Node *Parent, int side)
+Node *insert_node (char *name, Node *Parent, int side)
 {
     Node *New_node = create_node ();
     New_node->name = name;
@@ -106,6 +113,8 @@ void insert_node (char *name, Node *Parent, int side)
             Parent->Right = New_node;
         }
     }
+
+    return New_node;
 }
 
 //-----------------------------------------------------------------------------
@@ -135,49 +144,112 @@ Node *find_node (Node *Curr_node, char *name)
 
 void *print_tree (Node *Curr_node, Tree_info *Info)
 {
-    if(Curr_node)
+    tprint("{%s", Curr_node->name);
+
+    if(Curr_node->Left || Curr_node->Right)
     {
-        for(int i = 0; i < Info->N(TABS); i++)
+        tprint("\n");
+
+        if(Curr_node->Left)
         {
-            tprint(" ");
+            print_tree (Curr_node->Left, Info);
         }
 
-        tprint("{%s", Curr_node->name);
+        else tprint("{NULL}\n");
+
+        if(Curr_node->Right)
+        {
+            print_tree (Curr_node->Right, Info);
+        }
+
+        else tprint("{NULL}\n");
     }
-
-    if(Curr_node->Left)
-    {
-        Info->N(TABS) += 4;
-
-        tprint("\n");
-
-        print_tree (Curr_node->Left, Info);
-    }
-
-    if(Curr_node->Right)
-    {
-        Info->N(TABS) += 4;
-
-        tprint("\n");
-
-        print_tree (Curr_node->Right, Info);
-    }
-
-    Info->N(TABS) -= 4;
 
     tprint("}\n");
 }
 
 //-----------------------------------------------------------------------------
 
+void read_tree (Tree_info *Info)
+{
+    while(Info->N(CURR_LINE) < Info->File_input->num_of_lines)
+    {
+        char name[MAX_LEN] = "";
+
+        Node *New_node = NULL;
+
+        if(sscanf (Info->Text[Info->N(CURR_LINE)].begin_line, "{%s", name) == 1 &&
+           strchr (Info->Text[Info->N(CURR_LINE)].begin_line, '}') != NULL)         )
+        {
+            if(!Info->Curr_parent->Left)
+            {
+                insert_node (name, Info->Curr_parent, LEFT);
+            }
+
+            else
+            {
+                insert_node (name, Info->Curr_parent, RIGHT);
+            }
+
+            printf ("-%s\n", name);
+
+            ++Info->N(CURR_LINE);
+        }
+
+        else if(sscanf (Info->Text[Info->N(CURR_LINE)].begin_line, "{%s", name) == 1)
+        {
+
+            if(!Info->Root)
+            {
+                create_root (name, Info);
+
+                Info->Curr_parent = Info->Root;
+            }
+
+            else
+            {
+                if(!Info->Curr_parent->Left)
+                {
+                    New_node = insert_node (name, Info->Curr_parent, LEFT);
+                }
+
+                else
+                {
+                    New_node = insert_node (name, Info->Curr_parent, RIGHT);
+                }
+
+                Info->Curr_parent = New_node;
+            }
+
+            printf ("-%s\n", name);
+
+            read_tree (Info);
+
+            ++Info->N(CURR_LINE);
+        }
+
+        else if(Info->Text[Info->N(CURR_LINE)].begin_line[0] == '}')
+        {
+            Info->Curr_parent = Info->Curr_parent->Parent;
+
+            ++Info->N(CURR_LINE);
+        }
+
+        else
+        {
+            printf ("WHAS IS DAS?\n");
+        }
+    }
+}
+
+//-----------------------------------------------------------------------------
+
 void print_tree_preorder (Node *Root)
 {
-    Node *Curr_node = Root;
+    printf ("(%s", Root->name);
 
-    printf ("(%d", Curr_node->name);
-
-    if(Curr_node->Left)  print_tree_preorder (Curr_node->Left);
-    if(Curr_node->Right) print_tree_preorder (Curr_node->Right);
+    if(Root->Left)  print_tree_preorder (Root->Left);
+    if(Root->Right) print_tree_preorder (Root->Right);
 
     printf (")");
 }
