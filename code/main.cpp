@@ -8,10 +8,11 @@ int main ()
 
     read_tree (Info);
 
-    print_tree_preorder (Info->Root);
-
     //-----------------------------------------------------------------------------
-    /*
+
+/*
+    create_root ("TOMT", Info);
+
     insert_node ("amogus", Info->Root, LEFT);
     insert_node ("grigorievich", Info->Root, RIGHT);
 
@@ -25,7 +26,9 @@ int main ()
     insert_node ("TOUT", Cur_cell, RIGHT);
 
     print_tree (Info->Root, Info);
-    */
+
+    print_tree_preorder (Info->Root);*/
+
     //-----------------------------------------------------------------------------
 
     tree_dtor (Info->Root);

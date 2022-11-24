@@ -23,12 +23,19 @@
 
 //-----------------------------------------------------------------------------
 
+enum TREE_INFO
+{
+    MAX_LEN = 100,
+};
+
+//-----------------------------------------------------------------------------
+
 typedef struct Node
 {
     Node *Parent;
     Node *Left;
     Node *Right;
-    char *name;
+    char  name[MAX_LEN];
 } Node;
 
 //-----------------------------------------------------------------------------
@@ -42,6 +49,7 @@ typedef struct Tree_info
     File *File_input;
     Node *Root;
     Node *Curr_parent;
+    int   flag_stop;
 } Tree_info;
 
 //-----------------------------------------------------------------------------
@@ -54,13 +62,6 @@ enum SIDES
 
 //-----------------------------------------------------------------------------
 
-enum TREE_INFO
-{
-    MAX_LEN = 100,
-};
-
-//-----------------------------------------------------------------------------
-
 Node      *create_node          ();
 
 Node      *create_root          (char *name, Tree_info *Info);
@@ -69,7 +70,7 @@ Node      *insert_node          (char *name, Node *Parent, int side);
 
 void      *print_tree           (Node *Curr_node, Tree_info *Info);
 
-void       read_tree            (Tree_info *Info);
+Node      *read_tree            (Tree_info *Info);
 
 void       get_node             (Node *Root);
 
