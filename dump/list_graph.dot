@@ -1,0 +1,27 @@
+digraph structs {                                                                  
+rankdir = TB;                                                                      
+graph [dpi = 100];                                                                 
+ranksep = 1.5;                                                                     
+edge[penwidth = 10];                                                               
+cell0 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> GGGG} " ];                         
+cell1 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> amogus} " ];                         
+cell2 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> BERLIN} " ];                         
+cell3 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> LIBLIN} " ];                         
+cell4 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> TOUT} " ];                         
+cell5 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> MOSCOW} " ];                         
+cell6 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> GGGG} " ];                         
+-> cell0;
+cell1 -> -> cell2;
+cell3 -> -> cell4;
+cell5 -> -> cell6;
+cell7 -> -> cell8;
+cell9 -> -> cell10;
+cell11 -> -> cell12;
+}

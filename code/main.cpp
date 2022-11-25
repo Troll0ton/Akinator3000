@@ -1,10 +1,10 @@
-#include "../include/akinator3000.h"
+#include "../include/tree.h"
 
 //-----------------------------------------------------------------------------
 
 int main ()
 {
-    Tree_info *Info = tree_info_ctor ();
+    Tree_info *Info = tree_info_ctor();
 
     read_tree (Info);
 
@@ -12,9 +12,10 @@ int main ()
 
     print_tree (Info->Root, Info);
 
-    //-----------------------------------------------------------------------------
+    tree_dump (Info);
 
-/*
+    //-----------------------------------------------------------------------------
+    /*
     create_root ("TOMT", Info);
 
     insert_node ("amogus", Info->Root, LEFT);
@@ -31,7 +32,9 @@ int main ()
 
 
 
-    print_tree_preorder (Info->Root);*/
+    print_tree_preorder (Info->Root);
+
+    print_tree (Info->Root, Info); */
 
     //-----------------------------------------------------------------------------
 

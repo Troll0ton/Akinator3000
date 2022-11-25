@@ -5,13 +5,17 @@
 
 //-----------------------------------------------------------------------------
 
+
+#include <TXLib.h>
+#include "../include/tree.h"
+
 #include "../include/lines_handle.h"
 #include "../include/input_output.h"
 #include "../include/stack.h"
 
 //-----------------------------------------------------------------------------
 
-#define tprint(...) fprintf (Info->tree_out_file, __VA_ARGS__)
+#define tprint(...) fprintf (Info->file_out, __VA_ARGS__)
 
 //-----------------------------------------------------------------------------
 
@@ -42,8 +46,8 @@ typedef struct Node
 
 typedef struct Tree_info
 {
-    FILE *tree_in_file;
-    FILE *tree_out_file;
+    FILE *file_in;
+    FILE *file_out;
     int   N(CURR_LINE);
     Line *Text;
     File *File_input;
