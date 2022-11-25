@@ -8,6 +8,10 @@ int main ()
 
     read_tree (Info);
 
+    print_tree_preorder (Info->Root);
+
+    print_tree (Info->Root, Info);
+
     //-----------------------------------------------------------------------------
 
 /*
@@ -25,7 +29,7 @@ int main ()
     insert_node ("LIBLIN", Cur_cell, LEFT);
     insert_node ("TOUT", Cur_cell, RIGHT);
 
-    print_tree (Info->Root, Info);
+
 
     print_tree_preorder (Info->Root);*/
 

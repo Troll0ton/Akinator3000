@@ -54,12 +54,6 @@ Node *create_node ()
         New_node->Parent = NULL;
         New_node->Left   = NULL;
         New_node->Right  = NULL;
-        New_node->name   = (char*) calloc (MAX_LEN, sizeof (char));
-
-        if(New_node->name == NULL)
-        {
-            printf ("ERROR - memory allocation for Node name!\n");
-        }
     }
 
     return New_node;
@@ -73,7 +67,7 @@ Node *create_root (char *name, Tree_info *Info)
 
     Info->Root = Root;
 
-    Root->name = name;
+    strcpy (Root->name, name);
 
     return Root;
 }
@@ -188,7 +182,7 @@ Node *read_tree (Tree_info *Info)
             New_node->Left = read_tree (Info);
             New_node->Right = read_tree (Info);
 
-            printf ("--%s\n", name);
+            printf ("--\n", name);
 
             print_tree_preorder (New_node);
 

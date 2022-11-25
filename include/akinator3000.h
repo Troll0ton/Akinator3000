@@ -35,7 +35,7 @@ typedef struct Node
     Node *Parent;
     Node *Left;
     Node *Right;
-    char  name[MAX_LEN];
+    char *name;
 } Node;
 
 //-----------------------------------------------------------------------------

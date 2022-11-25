@@ -1,4 +1,4 @@
-{ADED
+{GGGG
 {amogus
 {BERLIN
 {LIBLIN}
@@ -6,5 +6,5 @@
 }
 {MOSCOW}
 }
-{grigorievich}
+{GGGG}
 }

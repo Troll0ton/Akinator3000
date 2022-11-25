@@ -55,8 +55,8 @@ typedef struct File
 typedef struct Line
 {
     char *begin_line;
-
-    char  name[100];
+    
+    char  
 
     int   line_lenght;
 } Line;
