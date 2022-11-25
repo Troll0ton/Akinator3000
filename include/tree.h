@@ -26,6 +26,7 @@
 //-----------------------------------------------------------------------------
 
 #define DELETED_PAR -1
+#define POISON_PTR  -1
 
 //-----------------------------------------------------------------------------
 
@@ -107,6 +108,10 @@ void       tree_dump            (Tree_info *Info);
 void       make_tree_graph      (Tree_info *Info);
 
 void       print_tree_postorder (Node *Root);
+
+Node      *handle_end_node      (Tree_info *Info);
+
+Node      *handle_branch_node   (Tree_info *Info);
 
 void       cell_builder         (Node *Root, Tree_info *Info);
 

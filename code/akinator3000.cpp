@@ -44,7 +44,7 @@ void choose_mode ()
 
 void guessing_mode ()
 {
-    printf ("HELLO WORLD! It is ");
+    printf ("HELLO WORLD! It is guessing_mode");
 
 }
 

@@ -1,27 +1,38 @@
-digraph structs {                                                                  
-rankdir = TB;                                                                      
-graph [dpi = 100];                                                                 
-ranksep = 1.5;                                                                     
-edge[penwidth = 10];                                                               
+digraph structs {    
+rankdir = TB;        
+graph [dpi = 200];   
+ranksep = 1.5;       
+edge[penwidth = 10]; 
 cell0 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> GGGG} " ];                         
+shape=record,label = " { <ptr> ANTON} " ];                         
 cell1 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> amogus} " ];                         
+shape=record,label = " { <ptr> TOM} " ];                         
 cell2 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> BERLIN} " ];                         
+shape=record,label = " { <ptr> KOK} " ];                         
 cell3 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> LIBLIN} " ];                         
+shape=record,label = " { <ptr> TOB} " ];                         
 cell4 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> TOUT} " ];                         
+shape=record,label = " { <ptr> KEK} " ];                         
 cell5 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> MOSCOW} " ];                         
+shape=record,label = " { <ptr> KEK} " ];                         
 cell6 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> GGGG} " ];                         
--> cell0;
-cell1 -> -> cell2;
-cell3 -> -> cell4;
-cell5 -> -> cell6;
-cell7 -> -> cell8;
-cell9 -> -> cell10;
-cell11 -> -> cell12;
+shape=record,label = " { <ptr> KEK} " ];                         
+cell7 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> KEK} " ];                         
+cell8 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> KEK} " ];                         
+cell9 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> KEK} " ];                         
+cell10 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> KEK} " ];                         
+cell0 -> cell1;
+cell1 -> cell2;
+cell1 -> cell3;
+cell0 -> cell4;
+cell4 -> cell5;
+cell5 -> cell6;
+cell5 -> cell7;
+cell4 -> cell8;
+cell8 -> cell9;
+cell8 -> cell10;
 }
