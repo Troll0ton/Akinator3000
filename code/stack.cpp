@@ -42,7 +42,7 @@ void stack_dtor (struct Stack *stk)
 
 //-----------------------------------------------------------------------------
 
-void stack_push (struct Stack *stk, double elem)
+void stack_push (struct Stack *stk, char *elem)
 {
     int32_t new_hash = calculate_hash (stk);
 
@@ -53,9 +53,9 @@ void stack_push (struct Stack *stk, double elem)
         stack_resize (stk, stk_increase);
     }
 
-    stk->buffer_stk[stk->size_stk] = elem;
+    *(char**)(stk->buffer_stk + stk->size_stk) = elem;
 
-    (stk->size_stk)++;
+    stk->size_stk++;
 
     stk->hash = calculate_hash (stk);
 }
@@ -90,13 +90,14 @@ void stack_resize (struct Stack *stk, int opt_resize)
 
 //-----------------------------------------------------------------------------
 
-double stack_pop (struct Stack *stk)
+char *stack_pop (struct Stack *stk)
 {
     int32_t new_hash = calculate_hash (stk);
 
     verificate_stack (stk, new_hash);
 
-    double elem_del = stk->buffer_stk[stk->size_stk - 1];
+    char *elem_del = *(char**)(stk->buffer_stk + stk->size_stk - 1);
+
     stk->buffer_stk[stk->size_stk - 1] = 0;
 
     stk->size_stk--;

@@ -5,6 +5,10 @@
 
 int main ()
 {
+    choose_mode ();
+
+    //-----------------------------------------------------------------------------
+    /*
     Tree_info *Info = tree_info_ctor();
 
     read_tree (Info);
@@ -14,6 +18,8 @@ int main ()
     print_tree (Info->Root, Info);
 
     tree_dump (Info);
+
+    */
 
     //-----------------------------------------------------------------------------
     /*
@@ -35,13 +41,15 @@ int main ()
 
     print_tree_preorder (Info->Root);
 
-    print_tree (Info->Root, Info); */
+    print_tree (Info->Root, Info);
 
     //-----------------------------------------------------------------------------
 
     tree_dtor (Info->Root);
 
     tree_info_dtor (Info);
+
+    */
 
     return 0;
 }

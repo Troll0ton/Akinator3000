@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=
-SOURCES=main.cpp tree.cpp lines_handle.cpp input_output.cpp stack.cpp
+SOURCES=main.cpp tree.cpp akinator3000.cpp lines_handle.cpp input_output.cpp stack.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=akinator
 

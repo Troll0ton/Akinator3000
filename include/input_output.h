@@ -56,8 +56,6 @@ typedef struct Line
 {
     char *begin_line;
 
-    char  name[100];
-
     int   line_lenght;
 } Line;
 

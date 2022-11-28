@@ -2,26 +2,25 @@
 
 //-----------------------------------------------------------------------------
 
-Tree_info *tree_info_ctor_ (const char* file, int line)
+Tree_info *tree_info_ctor_ (const char* log_file, int line)
 {
     Tree_info *Info = (Tree_info*) calloc (1, sizeof (Tree_info));
 
-    Info->line = line;
-    Info->file = file;
-    Info->Root = NULL;
+    Info->line        = line;
+    Info->log_file    = log_file;
+    Info->Root        = NULL;
     Info->Curr_parent = NULL;
 
-    Info->file_in   = fopen ("../files/tree_in.txt",   "r");
-    Info->file_out  = fopen ("../files/tree_out.txt",  "w+");
+    Info->file_tree = fopen ("../files/tree.txt",      "r");
     Info->file_dump = fopen ("../dump/tree_dump.html", "w+");
 
-    Info->File_input = file_reader (Info->file_in);
+    Info->File_input = file_reader (Info->file_tree);
     Info->Text = lines_separator (Info->File_input);
 
-    Info->N(CURR_LINE) = 0;
-    Info->N(CURR_CELL) = 0;
-    Info->flag_stop    = 0;
-    Info->graph_num    = 0;
+    Info->curr_line = 0;
+    Info->curr_cell = 0;
+    Info->flag_stop = 0;
+    Info->graph_num = 0;
 
     return Info;
 }
@@ -31,14 +30,16 @@ Tree_info *tree_info_ctor_ (const char* file, int line)
 void tree_info_dtor (Tree_info *Info)
 {
     Info->Root = NULL;
+    Info->Curr_parent = NULL;
 
-    fclose (Info->file_in);
-    fclose (Info->file_out);
+    fclose (Info->file_tree);
     fclose (Info->file_dump);
 
     clear_mem (Info->Text, Info->File_input);
 
-    Info->N(CURR_LINE) = DELETED_PAR;
+    Info->curr_line = DELETED_PAR;
+    Info->curr_cell = DELETED_PAR;
+    Info->flag_stop = DELETED_PAR;
 
     free (Info);
 }
@@ -59,7 +60,8 @@ Node *create_node ()
         New_node->Parent = NULL;
         New_node->Left   = NULL;
         New_node->Right  = NULL;
-        New_node->name   = NULL;
+
+        New_node->name = (char*) calloc (MAX_LEN, sizeof (char));
     }
 
     return New_node;
@@ -72,7 +74,7 @@ Node *create_root (char *name, Tree_info *Info)
     Node *Root = create_node ();
     Info->Root = Root;
 
-    Root->name = name;
+    strcpy (Root->name, name + 1);
 
     return Root;
 }
@@ -83,7 +85,8 @@ Node *insert_node (char *name, Node *Parent, int side)
 {
     Node *New_node = create_node ();
 
-    New_node->name   = name;
+    strcpy (New_node->name, name);
+
     New_node->Parent = Parent;
 
     if(side == LEFT)
@@ -101,7 +104,7 @@ Node *insert_node (char *name, Node *Parent, int side)
 
 //-----------------------------------------------------------------------------
 
-Node *find_node (Node *Curr_node, char *name)
+Node *find_node (Node *Curr_node, char *name, Stack *Stk)
 {
     if(!Curr_node)
     {
@@ -110,14 +113,27 @@ Node *find_node (Node *Curr_node, char *name)
 
     if(stricmp (Curr_node->name, name) == 0)
     {
+        stack_push (Stk, Curr_node->name);
+
         return Curr_node;
     }
 
-    Node* Find_left  = find_node (Curr_node->Left,  name);
-    Node* Find_right = find_node (Curr_node->Right, name);
+    Node* Find_left  = find_node (Curr_node->Left,  name, Stk);
+    Node* Find_right = find_node (Curr_node->Right, name, Stk);
 
-    if(Find_left)  return Find_left;
-    if(Find_right) return Find_right;
+    if(Find_left)
+    {
+        stack_push (Stk, Curr_node->name);
+
+        return Find_left;
+    }
+
+    if(Find_right)
+    {
+        stack_push (Stk, Curr_node->name);
+
+        return Find_right;
+    }
 
     return NULL;
 }
@@ -152,10 +168,7 @@ void *print_tree (Node *Curr_node, Tree_info *Info)
 
 //-----------------------------------------------------------------------------
 
-#define CURR_LINE Info->Text[Info->N(CURR_LINE)].begin_line
-#define NODE_NAME Info->Text[Info->N(CURR_LINE)].name
-
-//-----------------------------------------------------------------------------
+#define CURR_LINE Info->Text[Info->curr_line].begin_line
 
 Node *read_tree (Tree_info *Info)
 {
@@ -194,24 +207,26 @@ Node *handle_branch_node (Tree_info *Info)
 
     if(!Info->Root)
     {
-        New_node = create_root (NODE_NAME, Info);
+        New_node = create_root (CURR_LINE, Info);
     }
 
     else
     {
         New_node = create_node ();
-        New_node->name = NODE_NAME;
+
+        strncpy (New_node->name, CURR_LINE + 1, Info->Text[Info->curr_line].line_lenght);
+
         New_node->Parent = Info->Curr_parent;
     }
 
     Info->Curr_parent = New_node;
 
-    Info->N(CURR_LINE)++;
+    Info->curr_line++;
 
     New_node->Left  = read_tree (Info);
     New_node->Right = read_tree (Info);
 
-    Info->N(CURR_LINE)++;
+    Info->curr_line++;
 
     return New_node;
 }
@@ -222,17 +237,15 @@ Node *handle_end_node (Tree_info *Info)
 {
     Node *New_node   = create_node ();
     New_node->Parent = Info->Curr_parent;
-    New_node->name   = NODE_NAME;
 
-    Info->N(CURR_LINE)++;
+    strncpy (New_node->name, CURR_LINE + 1, Info->Text[Info->curr_line].line_lenght);
+
+    Info->curr_line++;
 
     return New_node;
 }
 
-//-----------------------------------------------------------------------------
-
 #undef CURR_LINE
-#undef NODE_NAME
 
 //-----------------------------------------------------------------------------
 
@@ -280,13 +293,15 @@ void print_tree_postorder (Node *Root)
 
 //-----------------------------------------------------------------------------
 
+#define ROOT Info->Root
+
 void tree_dump (Tree_info *Info)
 {
     fprintf (Info->file_dump,
              "<pre>\n"
              "_________________________TREE__________________________________\n\n"
              "TREE - [Root - %p] at %s, LINE - %d \n\n",
-             Info->Root, Info->file, Info->line);
+             ROOT, Info->log_file, Info->line);
 
     make_tree_graph (Info);
 
@@ -295,6 +310,8 @@ void tree_dump (Tree_info *Info)
 }
 
 //-----------------------------------------------------------------------------
+
+#define CURR_CELL Info->curr_cell
 
 void make_tree_graph (Tree_info *Info)
 {
@@ -306,21 +323,21 @@ void make_tree_graph (Tree_info *Info)
                "ranksep = 1.5;       \n"
                "edge[penwidth = 10]; \n");
 
-    Info->N(CURR_CELL) = 0;
+    CURR_CELL = 0;
 
-    cell_builder (Info->Root, Info);
+    init_cell (ROOT, Info);
 
-    Info->N(CURR_CELL) = 1;
-
-    dot_print("cell0 ");
-
-    connections_builder (Info->Root->Left, Info);
+    CURR_CELL = 1;
 
     dot_print("cell0 ");
 
-    Info->N(CURR_CELL)++;
+    build_connections (ROOT->Left, Info);
 
-    connections_builder (Info->Root->Right, Info);
+    dot_print("cell0 ");
+
+    CURR_CELL++;
+
+    build_connections (ROOT->Right, Info);
 
     dot_print ("}\n");
 
@@ -338,56 +355,57 @@ void make_tree_graph (Tree_info *Info)
     fprintf (Info->file_dump, img_name);
 }
 
+#undef ROOT
+
 //-----------------------------------------------------------------------------
 
-void cell_builder (Node *Root, Tree_info *Info)
+void init_cell (Node *Root, Tree_info *Info)
 {
     dot_print ("cell%d [style = filled, color = black, fillcolor = paleturquoise1,\n"
                "shape=record,label = \" { <ptr> %s} \" ];                         \n",
-               Info->N(CURR_CELL), Root->name);
+               CURR_CELL, Root->name);
 
-    Info->N(CURR_CELL)++;
+    CURR_CELL++;
 
     if(Root->Left)
     {
-        cell_builder (Root->Left, Info);
+        init_cell (Root->Left, Info);
     }
 
     if(Root->Right)
     {
-        cell_builder (Root->Right, Info);
+        init_cell (Root->Right, Info);
     }
 }
 
 //-----------------------------------------------------------------------------
 
-void connections_builder (Node *Root, Tree_info *Info)
+void build_connections (Node *Root, Tree_info *Info)
 {
-    dot_print("-> cell%d;\n",
-              Info->N(CURR_CELL));
+    dot_print("-> cell%d;\n", CURR_CELL);
 
-    int curr_cell = Info->N(CURR_CELL);
+    int prev_cell = CURR_CELL;
 
     if(Root->Left)
     {
-        dot_print("cell%d ",
-                  curr_cell);
+        dot_print("cell%d ", prev_cell);
 
-        Info->N(CURR_CELL)++;
+        CURR_CELL++;
 
-        connections_builder (Root->Left, Info);
+        build_connections (Root->Left, Info);
     }
 
     if(Root->Right)
     {
-        dot_print("cell%d ",
-                  curr_cell);
+        dot_print("cell%d ", prev_cell);
 
-        Info->N(CURR_CELL)++;
+        CURR_CELL++;
 
-        connections_builder (Root->Right, Info);
+        build_connections (Root->Right, Info);
     }
 }
+
+#undef CURR_CELL
 
 //-----------------------------------------------------------------------------
 

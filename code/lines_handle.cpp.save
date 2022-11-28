@@ -90,21 +90,13 @@ Line *lines_separator (File *Oper_file)
 
             Array_struct[num_line].begin_line = Oper_file->file_buffer + i - cur_len;
 
-            sscanf (Array_struct[num_line].begin_line, "%s", Array_struct[num_line].name);
-
-            int name_len = strlen (Array_struct[num_line].name);
+            int name_len = strlen (Array_struct[num_line].begin_line);
 
             for(int j = 0; j < name_len; j++)
             {
-                if(Array_struct[num_line].name[j] == '{')
+                if(Array_struct[num_line].begin_line[j] == '}')
                 {
-                    Array_struct[num_line].name[j] = '\0';
-                    Array_struct[num_line].name = Array_struct[num_line].name + 1;
-                }
-
-                if(Array_struct[num_line].name[j] == '}')
-                {
-                    Array_struct[num_line].name[j] = '\0';
+                    Array_struct[num_line].begin_line[j] = '\0';
                 }
             }
 

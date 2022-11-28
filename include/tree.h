@@ -11,7 +11,7 @@
 
 //-----------------------------------------------------------------------------
 
-#define tprint(...) fprintf (Info->file_out, __VA_ARGS__)
+#define tprint(...) fprintf (Info->file_tree, __VA_ARGS__)
 
 #define dot_print(...) fprintf (Info->file_dot, __VA_ARGS__)
 
@@ -26,7 +26,7 @@
 //-----------------------------------------------------------------------------
 
 #define DELETED_PAR -1
-#define POISON_PTR  -1
+#define POISON_PTR  NULL
 
 //-----------------------------------------------------------------------------
 
@@ -49,11 +49,10 @@ typedef struct Node
 
 typedef struct Tree_info
 {
-    FILE *file_in;
-    FILE *file_out;
+    FILE *file_tree;
     FILE *file_dump;
-
     FILE *file_dot;
+
     int   graph_num;
 
     Line *Text;
@@ -62,12 +61,12 @@ typedef struct Tree_info
     Node *Root;
     Node *Curr_parent;
 
-    int   N(CURR_LINE);
-    int   N(CURR_CELL);
+    int   curr_line;
+    int   curr_cell;
     int   flag_stop;
 
     const char *name;
-    const char *file;
+    const char *log_file;
     int         line;
 } Tree_info;
 
@@ -95,11 +94,11 @@ void       get_node             (Node *Root);
 
 void       print_tree_preorder  (Node *Root);
 
-Tree_info *tree_info_ctor_      (const char* file, int line);
+Tree_info *tree_info_ctor_      (const char* log_file, int line);
 
 void       tree_info_dtor       (Tree_info *Info);
 
-Node      *find_node            (Node *Curr_node, char *name);
+Node      *find_node            (Node *Curr_node, char *name, Stack *Stk);
 
 void       print_tree_inorder   (Node *Root);
 
@@ -113,9 +112,9 @@ Node      *handle_end_node      (Tree_info *Info);
 
 Node      *handle_branch_node   (Tree_info *Info);
 
-void       cell_builder         (Node *Root, Tree_info *Info);
+void       init_cell            (Node *Root, Tree_info *Info);
 
-void       connections_builder  (Node *Root, Tree_info *Info);
+void       build_connections    (Node *Root, Tree_info *Info);
 
 void       tree_dtor            (Node *Curr_node);
 

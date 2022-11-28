@@ -70,6 +70,13 @@ typedef struct Error_info
 
 //-----------------------------------------------------------------------------
 
+enum STACK_INFO
+{
+    SIZE_INIT = 100,
+};
+
+//-----------------------------------------------------------------------------
+
 enum ERROR_CODES
 {
     ERR_CAN_1  = (1 << 1),
@@ -101,8 +108,8 @@ const struct Error_info error_arr[]
 int     stack_ctor_      (struct Stack *stk,     int capacity_ctor, const char* stk_name,
                           const char* file_name, int stk_line                            );
 void    stack_dtor       (Stack *stk);
-double  stack_pop        (struct Stack *stk);
-void    stack_push       (struct Stack *stk, double elem);
+char   *stack_pop        (struct Stack *stk);
+void    stack_push       (struct Stack *stk, char *elem);
 void    stack_resize     (struct Stack *stk, int opt_resize);
 void    stack_dump_      (struct Stack *stk);
 void    stack_dumps      (struct Stack *stk, FILE *log_file);
