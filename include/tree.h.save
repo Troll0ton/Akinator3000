@@ -66,7 +66,7 @@ typedef struct Tree_info
     int   flag_stop;
 
     const char *name;
-    const char *file;
+    const char *log_file;
     int         line;
 } Tree_info;
 
@@ -94,7 +94,7 @@ void       get_node             (Node *Root);
 
 void       print_tree_preorder  (Node *Root);
 
-Tree_info *tree_info_ctor_      (const char* file, int line);
+Tree_info *tree_info_ctor_      (const char* log_file, int line);
 
 void       tree_info_dtor       (Tree_info *Info);
 
@@ -112,9 +112,9 @@ Node      *handle_end_node      (Tree_info *Info);
 
 Node      *handle_branch_node   (Tree_info *Info);
 
-void       cell_builder         (Node *Root, Tree_info *Info);
+void       create_cell            (Node *Root, Tree_info *Info);
 
-void       build_connections  (Node *Root, Tree_info *Info);
+void       build_connections    (Node *Root, Tree_info *Info);
 
 void       tree_dtor            (Node *Curr_node);
 

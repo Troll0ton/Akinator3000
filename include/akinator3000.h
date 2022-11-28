@@ -7,9 +7,8 @@
 
 #include "../include/tree.h"
 
-//-----------------------------------------------------------------------------
-
-#define tprint(...) fprintf (Info->file_out, __VA_ARGS__)
+#include "TXLib.h"
+#define TX_USE_SPEAK
 
 //-----------------------------------------------------------------------------
 
@@ -39,6 +38,8 @@ void guessing_mode   (Tree_info *Info);
 void comparison_mode (Tree_info *Info);
 
 void asking          (Tree_info *Info);
+
+void say_sentence    (char* sentence);
 
 //-----------------------------------------------------------------------------
 

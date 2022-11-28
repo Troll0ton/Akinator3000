@@ -8,23 +8,27 @@ shape=record,label = " { <ptr> Country} " ];
 cell1 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> south} " ];                         
 cell2 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> africa}} " ];                         
+shape=record,label = " { <ptr> africa} " ];                         
 cell3 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> ihih} " ];                         
 cell4 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> huh} " ];                         
 cell5 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> Europe}} " ];                         
+shape=record,label = " { <ptr> Europe} " ];                         
 cell6 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> there_are_people} " ];                         
 cell7 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> Animal}} " ];                         
+shape=record,label = " { <ptr> Animal} " ];                         
 cell8 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> SDS} " ];                         
 cell9 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> GEGR}} " ];                         
+shape=record,label = " { <ptr> kjkj} " ];                         
 cell10 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> Town}} " ];                         
+shape=record,label = " { <ptr> hj} " ];                         
+cell11 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> GEGR} " ];                         
+cell12 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> Town} " ];                         
 cell0 -> cell1;
 cell1 -> cell2;
 cell1 -> cell3;
@@ -34,5 +38,7 @@ cell0 -> cell6;
 cell6 -> cell7;
 cell6 -> cell8;
 cell8 -> cell9;
-cell8 -> cell10;
+cell9 -> cell10;
+cell9 -> cell11;
+cell8 -> cell12;
 }

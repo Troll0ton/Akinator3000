@@ -8,6 +8,10 @@ void choose_mode ()
 
     read_tree (Info);
 
+    print_tree_preorder (Info->Root);
+
+    SayWords ("GOOD MORNING MY DEAR FRIENDE!");
+
     printf ("________________________________________________________________________\n"
             "   HELLO WORLD! It is Akinator, choose the mode:\n\n"
             "   0 - GUEESSING MODE\n"
@@ -35,9 +39,10 @@ void choose_mode ()
     }
 
     fclose (Info->file_tree);
+
     Info->file_tree = fopen ("../files/tree.txt", "w+");
 
-    print_tree (Info->Root, Info);
+    save_tree (Info->Root, Info);
 
     tree_dump (Info);
 
@@ -129,7 +134,6 @@ void asking (Tree_info *Info)
             char *difference  = (char*) calloc (MAX_LEN, sizeof (char));
 
             printf ("I do not know this thing! Enter your description:\n");
-            
             scanf  ("%s", description);
 
             printf ("Enter your difference:\n");
@@ -221,6 +225,28 @@ void comparison_mode (Tree_info *Info)
 
     stack_dtor (&Stk1);
     stack_dtor (&Stk2);
+}
+
+//-----------------------------------------------------------------------------
+
+void say_sentence (char* temp, ...)
+{
+    char message[MAX_LEN] = "";
+    char message_tmp[MAX_LEN] = "";
+
+    va_list params;
+    va_start (params, temp);
+
+    vsprintf (message, temp, params);
+    printf ("%s", message);
+
+    sprintf (message_tmp, "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"en-US\"> \
+                    <voice name=\"en-US-TonyNeural\">                         \
+                    %s                                                                                 \
+                    </voice>                                                               \
+                    </speak>", message); 
+
+    txSpeak (message_tmp);
 }
 
 //-----------------------------------------------------------------------------

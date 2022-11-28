@@ -8,6 +8,10 @@ void choose_mode ()
 
     read_tree (Info);
 
+    print_tree_preorder (Info->Root);
+
+    say_sentence ("GOOD MORNING MY DEAR FRIENDE!");
+
     printf ("________________________________________________________________________\n"
             "   HELLO WORLD! It is Akinator, choose the mode:\n\n"
             "   0 - GUEESSING MODE\n"
@@ -35,9 +39,10 @@ void choose_mode ()
     }
 
     fclose (Info->file_tree);
+
     Info->file_tree = fopen ("../files/tree.txt", "w+");
 
-    print_tree (Info->Root, Info);
+    save_tree (Info->Root, Info);
 
     tree_dump (Info);
 
@@ -220,6 +225,21 @@ void comparison_mode (Tree_info *Info)
 
     stack_dtor (&Stk1);
     stack_dtor (&Stk2);
+}
+
+//-----------------------------------------------------------------------------
+
+void say_sentence (char* sentence)
+{
+    char speak_sentence[MAX_LEN] = "";
+
+    sprintf (speak_sentence, "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"en-US\"> \
+                    <voice name=\"en-US-TonyNeural\">                         \
+                    %s                                                                                 \
+                    </voice>                                                               \
+                    </speak>", sentence);
+
+    txSpeak (speak_sentence);
 }
 
 //-----------------------------------------------------------------------------

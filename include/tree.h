@@ -11,7 +11,7 @@
 
 //-----------------------------------------------------------------------------
 
-#define tprint(...) fprintf (Info->file_tree, __VA_ARGS__)
+#define trprint(...) fprintf (Info->file_tree, __VA_ARGS__)
 
 #define dot_print(...) fprintf (Info->file_dot, __VA_ARGS__)
 
@@ -86,7 +86,7 @@ Node      *create_root          (char *name, Tree_info *Info);
 
 Node      *insert_node          (char *name, Node *Parent, int side);
 
-void      *print_tree           (Node *Curr_node, Tree_info *Info);
+void       save_tree            (Node *Curr_node, Tree_info *Info);
 
 Node      *read_tree            (Tree_info *Info);
 
@@ -104,7 +104,7 @@ void       print_tree_inorder   (Node *Root);
 
 void       tree_dump            (Tree_info *Info);
 
-void       make_tree_graph      (Tree_info *Info);
+void       create_tree_graph    (Tree_info *Info);
 
 void       print_tree_postorder (Node *Root);
 
@@ -112,7 +112,7 @@ Node      *handle_end_node      (Tree_info *Info);
 
 Node      *handle_branch_node   (Tree_info *Info);
 
-void       init_cell            (Node *Root, Tree_info *Info);
+void       create_cell          (Node *Root, Tree_info *Info);
 
 void       build_connections    (Node *Root, Tree_info *Info);
 

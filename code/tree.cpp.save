@@ -61,7 +61,7 @@ Node *create_node ()
         New_node->Left   = NULL;
         New_node->Right  = NULL;
 
-        New_node->name = (char*) calloc (MAX_LEN, sizeof (char));
+        New_node->name = NULL;
     }
 
     return New_node;
@@ -74,7 +74,7 @@ Node *create_root (char *name, Tree_info *Info)
     Node *Root = create_node ();
     Info->Root = Root;
 
-    strcpy (Root->name, name);
+    Root->name = name;
 
     return Root;
 }
@@ -85,7 +85,7 @@ Node *insert_node (char *name, Node *Parent, int side)
 {
     Node *New_node = create_node ();
 
-    strcpy (New_node->name, name);
+    New_node->name = name;
 
     New_node->Parent = Parent;
 
@@ -178,6 +178,7 @@ Node *read_tree (Tree_info *Info)
 
     if(sym == '{')
     {
+        char *closing bracketpo
         if(strchr (CURR_LINE, '}') == NULL)
         {
             return handle_branch_node (Info);
@@ -207,14 +208,14 @@ Node *handle_branch_node (Tree_info *Info)
 
     if(!Info->Root)
     {
-        New_node = create_root (NODE_NAME, Info);
+        New_node = create_root (CURR_LINE, Info);
     }
 
     else
     {
         New_node = create_node ();
 
-        strncpy (New_node->name, NODE_NAME + 1, Info->Text[Info->curr_line].line_lenght);
+        New_node->name = CURR_LINE + 1;
 
         New_node->Parent = Info->Curr_parent;
     }
@@ -238,7 +239,8 @@ Node *handle_end_node (Tree_info *Info)
     Node *New_node   = create_node ();
     New_node->Parent = Info->Curr_parent;
 
-    strncpy (New_node->name, NODE_NAME + 1, Info->Text[Info->curr_line].line_lenght);
+    CURR_LINE
+    New_node->name = CURR_LINE + 1; //remove }
 
     Info->curr_line++;
 
@@ -325,7 +327,7 @@ void make_tree_graph (Tree_info *Info)
 
     CURR_CELL = 0;
 
-    init_cell (ROOT, Info);
+    create_cell (ROOT, Info);
 
     CURR_CELL = 1;
 
@@ -359,7 +361,7 @@ void make_tree_graph (Tree_info *Info)
 
 //-----------------------------------------------------------------------------
 
-void init_cell (Node *Root, Tree_info *Info)
+void create_cell (Node *Root, Tree_info *Info)
 {
     dot_print ("cell%d [style = filled, color = black, fillcolor = paleturquoise1,\n"
                "shape=record,label = \" { <ptr> %s} \" ];                         \n",
@@ -369,12 +371,12 @@ void init_cell (Node *Root, Tree_info *Info)
 
     if(Root->Left)
     {
-        init_cell (Root->Left, Info);
+        create_cell (Root->Left, Info);
     }
 
     if(Root->Right)
     {
-        init_cell (Root->Right, Info);
+        create_cell (Root->Right, Info);
     }
 }
 
@@ -411,11 +413,16 @@ void build_connections (Node *Root, Tree_info *Info)
 
 void tree_dtor (Node *Curr_node)
 {
-    if(Curr_node->Left) tree_dtor (Curr_node->Left);
+    if(Curr_node->Left)  
+    {
+        tree_dtor (Curr_node->Left);
+    }
 
-    if(Curr_node->Right) tree_dtor (Curr_node->Right);
+    if(Curr_node->Right) 
+    {
+        tree_dtor (Curr_node->Right);
+    }
 
-    free (Curr_node->name);
     free (Curr_node);
 }
 

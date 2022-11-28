@@ -1,0 +1,388 @@
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x223D656D. Попытка прочесть данные по адресу 0x223D656D. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0055367C (32-bit), Flags: Cmdre0, Thread: 0x1500 (Main), errno: 34 (Result too large), _doserrno: 131 (Unknown error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+#49 0x762F3C20 in C:\WINDOWS\System32\SHELL32.dll: Ordinal859()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\asus_tuf_gaming\desktop\программист\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 28 2022 18:06:44, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 28 2022 18:06:56
+
+Run file:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe
+Directory:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#16: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x20202020. Попытка прочесть данные по адресу 0x20202020. Дополнительно, превышен лимит исключений _TX_EXCEPTIONS_LIMIT (16). Также превышен лимит фатальных исключений _TX_FATAL_EXCEPTIONS_LIMIT (16). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0055367C (32-bit), Flags: Cmdre0, Thread: 0x1500 (Main), errno: 34 (Result too large), _doserrno: 131 (Unknown error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 2 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 3 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 4 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 5 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 6 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 7 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 8 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 9 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#10 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#11 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#12 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#13 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#14 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#15 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#16 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#17 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#18 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#19 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#20 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#21 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#22 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#23 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#24 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#25 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#26 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#27 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#28 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#29 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#30 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#31 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\asus_tuf_gaming\desktop\программист\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 28 2022 18:06:44, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 28 2022 18:06:57
+
+Run file:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe
+Directory:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x223D656D. Попытка прочесть данные по адресу 0x223D656D. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0055367C (32-bit), Flags: Cmdre0, Thread: 0x4854 (Main), errno: 34 (Result too large), _doserrno: 131 (Unknown error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+#49 0x762F3C20 in C:\WINDOWS\System32\SHELL32.dll: Ordinal859()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\asus_tuf_gaming\desktop\программист\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 28 2022 18:08:14, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 28 2022 18:08:17
+
+Run file:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe
+Directory:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#16: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x20202020. Попытка прочесть данные по адресу 0x20202020. Дополнительно, превышен лимит исключений _TX_EXCEPTIONS_LIMIT (16). Также превышен лимит фатальных исключений _TX_FATAL_EXCEPTIONS_LIMIT (16). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0055367C (32-bit), Flags: Cmdre0, Thread: 0x4854 (Main), errno: 34 (Result too large), _doserrno: 131 (Unknown error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 2 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 3 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 4 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 5 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 6 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 7 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 8 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 9 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#10 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#11 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#12 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#13 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#14 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#15 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#16 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#17 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#18 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#19 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#20 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#21 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#22 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#23 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#24 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#25 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#26 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#27 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#28 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#29 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#30 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#31 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\asus_tuf_gaming\desktop\программист\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 28 2022 18:08:14, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 28 2022 18:08:18
+
+Run file:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe
+Directory:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x552D6E65. Попытка прочесть данные по адресу 0x552D6E65. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0055367C (32-bit), Flags: Cmdre0, Thread: 0x33BC (Main), errno: 34 (Result too large), _doserrno: 131 (Unknown error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+#48 0x762F3C20 in C:\WINDOWS\System32\SHELL32.dll: Ordinal859()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\asus_tuf_gaming\desktop\программист\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 28 2022 18:10:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 28 2022 18:10:13
+
+Run file:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe
+Directory:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#16: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x20202020. Попытка прочесть данные по адресу 0x20202020. Дополнительно, превышен лимит исключений _TX_EXCEPTIONS_LIMIT (16). Также превышен лимит фатальных исключений _TX_FATAL_EXCEPTIONS_LIMIT (16). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0055367C (32-bit), Flags: Cmdre0, Thread: 0x33BC (Main), errno: 34 (Result too large), _doserrno: 131 (Unknown error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 2 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 3 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 4 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 5 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 6 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 7 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 8 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 9 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#10 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#11 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#12 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#13 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#14 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#15 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#16 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#17 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#18 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#19 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#20 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#21 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#22 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#23 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#24 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#25 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#26 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#27 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#28 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#29 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#30 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#31 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\asus_tuf_gaming\desktop\программист\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 28 2022 18:10:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 28 2022 18:10:13
+
+Run file:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe
+Directory:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x223D656D. Попытка прочесть данные по адресу 0x223D656D. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0055367C (32-bit), Flags: Cmdre0, Thread: 0x32C8 (Main), errno: 34 (Result too large), _doserrno: 131 (Unknown error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+#49 0x762F3C20 in C:\WINDOWS\System32\SHELL32.dll: Ordinal859()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\asus_tuf_gaming\desktop\программист\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 28 2022 18:16:01, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 28 2022 18:16:04
+
+Run file:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe
+Directory:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#16: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x20202020. Попытка прочесть данные по адресу 0x20202020. Дополнительно, превышен лимит исключений _TX_EXCEPTIONS_LIMIT (16). Также превышен лимит фатальных исключений _TX_FATAL_EXCEPTIONS_LIMIT (16). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0055367C (32-bit), Flags: Cmdre0, Thread: 0x32C8 (Main), errno: 34 (Result too large), _doserrno: 131 (Unknown error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 2 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 3 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 4 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 5 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 6 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 7 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 8 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 9 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#10 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#11 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#12 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#13 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#14 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#15 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#16 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#17 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#18 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#19 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#20 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#21 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#22 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#23 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#24 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#25 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#26 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#27 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#28 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#29 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#30 0x77D78F64 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#31 0x77D57176 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\asus_tuf_gaming\desktop\программист\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 28 2022 18:16:01, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 28 2022 18:16:05
+
+Run file:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.exe
+Directory:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code
+
+--------------------------------------------------
