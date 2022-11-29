@@ -386,3 +386,104 @@ Run file:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code\akinator.ex
 Directory:	C:\Users\ASUS_TUF_GAMING\Desktop\Git_Hub\Akinator3000\code
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\anton\OneDrive\Рабочий стол\Github\Akinator3000\code\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x223D656D. Попытка прочесть данные по адресу 0x223D656D. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0055367C (32-bit), Flags: Cmdre0, Thread: 0x194C (Main), errno: 34 (Result too large), _doserrno: 131 (Unknown error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00427EF3 in C:\Users\anton\OneDrive\Рабочий стол\Github\Akinator3000\code\akinator.exe: (anonymous namespace)::TX::_txOnExceptionSEH()
+# 1 0x004278F2 in C:\Users\anton\OneDrive\Рабочий стол\Github\Akinator3000\code\akinator.exe: (anonymous namespace)::TX::_txVectoredExceptionHandler()
+# 2 0x771AE6F2 in C:\Windows\SYSTEM32\ntdll.dll: RtlIpv4AddressToStringA()
+# 3 0x771A93B1 in C:\Windows\SYSTEM32\ntdll.dll: RtlUnwind()
+# 4 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\anton\onedrive\рабочий стол\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 29 2022 17:32:21, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 29 2022 17:32:28
+
+Run file:	C:\Users\anton\OneDrive\Рабочий стол\Github\Akinator3000\code\akinator.exe
+Directory:	C:\Users\anton\OneDrive\Рабочий стол\Github\Akinator3000\code
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\anton\OneDrive\Рабочий стол\Github\Akinator3000\code\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#16: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x20202020. Попытка прочесть данные по адресу 0x20202020. Дополнительно, превышен лимит исключений _TX_EXCEPTIONS_LIMIT (16). Также превышен лимит фатальных исключений _TX_FATAL_EXCEPTIONS_LIMIT (16). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0055367C (32-bit), Flags: Cmdre0, Thread: 0x194C (Main), errno: 34 (Result too large), _doserrno: 131 (Unknown error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 2 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 3 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 4 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 5 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 6 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 7 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+# 8 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+# 9 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#10 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#11 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#12 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#13 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#14 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#15 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#16 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#17 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#18 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#19 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#20 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#21 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#22 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#23 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#24 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#25 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#26 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#27 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#28 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#29 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+#30 0x771D8F64 in C:\Windows\SYSTEM32\ntdll.dll: RtlInterlockedCompareExchange64()
+#31 0x771B7176 in C:\Windows\SYSTEM32\ntdll.dll: KiUserExceptionDispatcher()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\anton\onedrive\рабочий стол\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 29 2022 17:32:21, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 29 2022 17:32:28
+
+Run file:	C:\Users\anton\OneDrive\Рабочий стол\Github\Akinator3000\code\akinator.exe
+Directory:	C:\Users\anton\OneDrive\Рабочий стол\Github\Akinator3000\code
+
+--------------------------------------------------
