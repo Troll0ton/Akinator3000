@@ -113,7 +113,7 @@ Node *find_node (Node *Curr_node, char *name, Stack *Stk)
 
     if(stricmp (Curr_node->name, name) == 0)
     {
-        stack_push (Stk, Curr_node->name);
+        stack_push (Stk, Curr_node);
 
         return Curr_node;
     }
@@ -123,14 +123,14 @@ Node *find_node (Node *Curr_node, char *name, Stack *Stk)
 
     if(Find_left)
     {
-        stack_push (Stk, Curr_node->name);
+        stack_push (Stk, Curr_node);
 
         return Find_left;
     }
 
     if(Find_right)
     {
-        stack_push (Stk, Curr_node->name);
+        stack_push (Stk, Curr_node);
 
         return Find_right;
     }
@@ -174,20 +174,20 @@ Node *read_tree (Tree_info *Info)
 {
     char sym = 0;
 
-    card_namescanf (CURR_LINE, "%c", &sym);
+    sscanf (CURR_LINE, "%c", &sym);
 
     if(sym == '{')
     {
-        char *closing_bracket_pos = strchr (CURR_LINE, '}');
+        char *closing_parentheses_pos = strchr (CURR_LINE, '}');
 
-        if(closing_bracket_pos == NULL)
+        if(closing_parentheses_pos == NULL)
         {
             return handle_branch_node (Info);
         }
 
         else
         {
-            *closing_bracket_pos = '\0';
+            *closing_parentheses_pos = '\0';
 
             return handle_end_node (Info);
         }
@@ -195,7 +195,7 @@ Node *read_tree (Tree_info *Info)
 
     else
     {
-        printf ("unidentifed symbol;\n");
+        printf ("unidentified symbol;\n");
 
         return POISON_PTR;
     }
@@ -335,13 +335,13 @@ void create_tree_graph (Tree_info *Info)
 
     dot_print("cell0 ");
 
-    build_cocard_valuesections (ROOT->Left, Info);
+    build_connections (ROOT->Left, Info);
 
     dot_print("cell0 ");
 
     CURR_CELL++;
 
-    build_cocard_valuesections (ROOT->Right, Info);
+    build_connections (ROOT->Right, Info);
 
     dot_print ("}\n");
 
@@ -385,7 +385,7 @@ void create_cell (Node *Root, Tree_info *Info)
 
 //-----------------------------------------------------------------------------
 
-void build_cocard_valuesections (Node *Root, Tree_info *Info)
+void build_connections (Node *Root, Tree_info *Info)
 {
     dot_print("-> cell%d;\n", CURR_CELL);
 
@@ -397,7 +397,7 @@ void build_cocard_valuesections (Node *Root, Tree_info *Info)
 
         CURR_CELL++;
 
-        build_cocard_valuesections (Root->Left, Info);
+        build_connections (Root->Left, Info);
     }
 
     if(Root->Right)
@@ -406,7 +406,7 @@ void build_cocard_valuesections (Node *Root, Tree_info *Info)
 
         CURR_CELL++;
 
-        build_cocard_valuesections (Root->Right, Info);
+        build_connections (Root->Right, Info);
     }
 }
 

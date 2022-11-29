@@ -8,13 +8,12 @@ void choose_mode ()
 
     read_tree (Info);
 
-    txSpeak ("ANTON CRUTOI CHEL");
-
-    printf ("________________________________________________________________________\n"
-            "   HELLO WORLD! It is Akinator, choose the mode:\n\n"
-            "   0 - GUEEcard_namesING MODE\n"
-            "   1 - SEARCHING MODE\n"
-            "   2 - COMPARISON MODE\n\n");
+    printf          ("________________________________________________________________________\n");
+    speak_and_print ("   HELLO WORLD! It is Akinator, choose the mode");
+    printf          (":  \n\n"
+                     "   0 - GUESSING MODE\n"
+                     "   1 - SEARCHING MODE\n"
+                     "   2 - COMPARISON MODE\n\n");
 
     int mode_par = 0;
 
@@ -22,8 +21,8 @@ void choose_mode ()
 
     switch(mode_par)
     {
-        case GUEEcard_namesING:
-            guecard_namesing_mode (Info);
+        case GUESSING:
+            guessing_mode (Info);
             break;
         case SEARCHING:
             searching_mode (Info);
@@ -32,7 +31,7 @@ void choose_mode ()
             comparison_mode (Info);
             break;
         default:
-            printf ("MODE DOES NOT EXIST!\n");
+            speak_and_print ("MODE DOES NOT EXIST!\n");
             break;
     }
 
@@ -53,8 +52,8 @@ void choose_mode ()
 
 void searching_mode (Tree_info *Info)
 {
-    printf ("HELLO WORLD! It is searching mode\n"
-            "Input name:\n\n");
+    speak_and_print ("HELLO WORLD! It is searching mode\n\
+                     Input name:\n\n");
 
     char name[MAX_LEN] = "";
 
@@ -63,19 +62,19 @@ void searching_mode (Tree_info *Info)
     Stack Stk = { 0 };
     stack_ctor (&Stk, SIZE_INIT);
 
-    printf ("description: ");
+    speak_and_print ("description: ");
 
     if(find_node (Info->Root, name, &Stk))
     {
         while(Stk.size_stk > 0)
         {
-            printf ("%s, ", stack_pop (&Stk));
+            speak_and_print ((stack_pop (&Stk))->name);
         }
     }
 
     else
     {
-        printf ("This name does not exists!\n");
+        speak_and_print ("This name does not exists!\n");
     }
 
     stack_dtor (&Stk);
@@ -83,9 +82,9 @@ void searching_mode (Tree_info *Info)
 
 //-----------------------------------------------------------------------------
 
-void guecard_namesing_mode (Tree_info *Info)
+void guessing_mode (Tree_info *Info)
 {
-    printf ("HELLO WORLD! It is guecard_namesing mode\n");
+    speak_and_print ("HELLO WORLD! It is guessing mode\n");
 
     Info->Curr_parent = Info->Root;
 
@@ -96,7 +95,15 @@ void guecard_namesing_mode (Tree_info *Info)
 
 void asking (Tree_info *Info)
 {
-    printf ("Is it %s?\n", Info->Curr_parent->name);
+    speak_and_print ("Is it ");
+    speak_and_print (Info->Curr_parent->name);
+
+    if(Info->Curr_parent->Left)
+    {
+        printf ("?");
+    }
+
+    printf ("\n");
 
     char answer[MAX_LEN] = "";
 
@@ -114,7 +121,7 @@ void asking (Tree_info *Info)
 
     else
     {
-        printf ("I don not understand you\n");
+        speak_and_print ("I do not understand you\n");
 
         asking (Info);
     }
@@ -133,7 +140,7 @@ void handle_yes_answer (Tree_info *Info)
 
     else
     {
-        printf ("I knew it!\n");
+        speak_and_print ("I knew it!\n");
     }
 }
 
@@ -161,11 +168,11 @@ void handle_user_node (Tree_info *Info)
     char *description = (char*) calloc (MAX_LEN, sizeof (char));
     char *difference  = (char*) calloc (MAX_LEN, sizeof (char));
 
-    printf ("I do not know this thing! Enter your description:\n");
-    scanf  ("%s", description);
+    speak_and_print ("I do not know this thing! Enter your description:\n");
+    scanf           ("%s", description);
 
-    printf ("Enter your difference:\n");
-    scanf  ("%s", difference);
+    speak_and_print ("Enter your difference:\n");
+    scanf           ("%s", difference);
 
     char *old_name = Info->Curr_parent->name;
 
@@ -181,8 +188,7 @@ void handle_user_node (Tree_info *Info)
 
 void comparison_mode (Tree_info *Info)
 {
-    printf ("HELLO WORLD! It is comparison mode\n"
-            "Input names:\n\n");
+    speak_and_print ("HELLO WORLD! It is comparison mode. Input names:\n\n");
 
     char name1[MAX_LEN] = "";
     char name2[MAX_LEN] = "";
@@ -205,7 +211,7 @@ void comparison_mode (Tree_info *Info)
 
     else
     {
-        printf ("One of names was not found!\n");
+        speak_and_print ("One of names was not found!\n");
     }
 
     stack_dtor (&Stk1);
@@ -221,39 +227,73 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
     char *first_description  = NULL;
     char *second_description = NULL;
 
-    printf ("SAME THINGS: ");
-
     while(Stk1->size_stk > 0 && Stk2->size_stk > 0)
     {
-        first_description  = stack_pop (Stk1);
-        second_description = stack_pop (Stk2);
+        first_description  = (stack_pop (Stk1))->name;
+        second_description = (stack_pop (Stk2))->name;
 
-        if(stricmp (first_description, second_description) == 0)
+        if(first_description == second_description)
         {
-            printf ("%s, ", first_description);
+            speak_and_print ("they are same in: ");
+            speak_and_print (first_description);
+            
+            printf ("\n");
         }
 
         else break;
     }
 
-    printf ("\n"
-            "DIFFERENCES: FIRST: ");
+    speak_and_print (", but first is");
 
     while(Stk1->size_stk > 0)
     {
-        printf ("%s, ", first_description);
+        speak_and_print (first_description);
 
-        first_description = stack_pop (Stk1);
+        first_description = (stack_pop (Stk1))->name;
     }
 
-    printf ("\n"
-            "             SECOND: ");
+    speak_and_print (", and second: ");
 
     while(Stk2->size_stk > 0)
     {
-        printf ("%s, ", second_description);
+        speak_and_print (second_description);
 
-        second_description = stack_pop (Stk2);
+        second_description = (stack_pop (Stk2))->name;
+    }
+}
+
+//-----------------------------------------------------------------------------
+
+void speak_up (char *text)
+{
+    char espeak_text[MAX_LEN] = "";
+
+    strcpy (espeak_text, "espeak \"");
+
+    strcat (espeak_text, text);
+    strcat (espeak_text, "\"");
+
+    system (espeak_text);
+}
+
+//-----------------------------------------------------------------------------
+
+void speak_and_print (char *text)
+{
+    printf ("%s ", text);
+
+    speak_up (text);
+}
+
+//-----------------------------------------------------------------------------
+
+char *get_line ()
+{
+    char *text = (char*) calloc (MAX_LEN, sizeof (char));
+    
+    while(getchar () != '\n') 
+    {
+        text++ = 
     }
 }
 

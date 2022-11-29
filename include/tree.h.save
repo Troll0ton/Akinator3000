@@ -37,6 +37,13 @@ enum TREE_INFO
 
 //-----------------------------------------------------------------------------
 
+enum TREE_OFFSETS
+{
+    OFFSET_PARENTHESES = 1,
+};
+
+//-----------------------------------------------------------------------------
+
 typedef struct Node
 {
     Node *Parent;
@@ -114,7 +121,7 @@ Node      *handle_branch_node   (Tree_info *Info);
 
 void       create_cell          (Node *Root, Tree_info *Info);
 
-void       build_cocard_valuesections    (Node *Root, Tree_info *Info);
+void       build_connections    (Node *Root, Tree_info *Info);
 
 void       tree_dtor            (Node *Curr_node);
 

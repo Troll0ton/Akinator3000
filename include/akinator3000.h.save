@@ -5,11 +5,10 @@
 
 //-----------------------------------------------------------------------------
 
-#include "../include/tree.h"
+#include "C:/Windows/System32/Speech/SpeechUX/sapi.cpl"
 
 //-----------------------------------------------------------------------------
 
-#define   TX_USE_SPEAK
 #include "TXLib.h"
 
 //-----------------------------------------------------------------------------
@@ -45,7 +44,7 @@ void handle_yes_answer      (Tree_info *Info);
 
 void handle_no_answer       (Tree_info *Info);
 
-void handle_user_node       (Tree_info *Info);
+void handle_userand_cardode (Tree_info *Info);
 
 void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2);
 

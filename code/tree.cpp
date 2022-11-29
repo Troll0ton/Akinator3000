@@ -104,33 +104,33 @@ Node *insert_node (char *name, Node *Parent, int side)
 
 //-----------------------------------------------------------------------------
 
-Node *find_node (Node *Currand_cardode, char *name, Stack *Stk)
+Node *find_node (Node *Curr_node, char *name, Stack *Stk)
 {
-    if(!Currand_cardode)
+    if(!Curr_node)
     {
         return NULL;
     }
 
-    if(stricmp (Currand_cardode->name, name) == 0)
+    if(stricmp (Curr_node->name, name) == 0)
     {
-        stack_push (Stk, Currand_cardode->name);
+        stack_push (Stk, Curr_node);
 
-        return Currand_cardode;
+        return Curr_node;
     }
 
-    Node* Find_left  = find_node (Currand_cardode->Left,  name, Stk);
-    Node* Find_right = find_node (Currand_cardode->Right, name, Stk);
+    Node* Find_left  = find_node (Curr_node->Left,  name, Stk);
+    Node* Find_right = find_node (Curr_node->Right, name, Stk);
 
     if(Find_left)
     {
-        stack_push (Stk, Currand_cardode->name);
+        stack_push (Stk, Curr_node);
 
         return Find_left;
     }
 
     if(Find_right)
     {
-        stack_push (Stk, Currand_cardode->name);
+        stack_push (Stk, Curr_node);
 
         return Find_right;
     }
@@ -140,24 +140,24 @@ Node *find_node (Node *Currand_cardode, char *name, Stack *Stk)
 
 //-----------------------------------------------------------------------------
 
-void save_tree (Node *Currand_cardode, Tree_info *Info)
+void save_tree (Node *Curr_node, Tree_info *Info)
 {
-    trprint("{%s", Currand_cardode->name);
+    trprint("{%s", Curr_node->name);
 
-    if(Currand_cardode->Left || Currand_cardode->Right)
+    if(Curr_node->Left || Curr_node->Right)
     {
         trprint("\n");
 
-        if(Currand_cardode->Left)
+        if(Curr_node->Left)
         {
-            save_tree (Currand_cardode->Left, Info);
+            save_tree (Curr_node->Left, Info);
         }
 
         else trprint("{NULL}\n");
 
-        if(Currand_cardode->Right)
+        if(Curr_node->Right)
         {
-            save_tree (Currand_cardode->Right, Info);
+            save_tree (Curr_node->Right, Info);
         }
 
         else trprint("{NULL}\n");
@@ -174,20 +174,20 @@ Node *read_tree (Tree_info *Info)
 {
     char sym = 0;
 
-    card_namescanf (CURR_LINE, "%c", &sym);
+    sscanf (CURR_LINE, "%c", &sym);
 
     if(sym == '{')
     {
-        char *closing_bracket_pos = strchr (CURR_LINE, '}');
+        char *closing_parentheses_pos = strchr (CURR_LINE, '}');
 
-        if(closing_bracket_pos == NULL)
+        if(closing_parentheses_pos == NULL)
         {
             return handle_branch_node (Info);
         }
 
         else
         {
-            *closing_bracket_pos = '\0';
+            *closing_parentheses_pos = '\0';
 
             return handle_end_node (Info);
         }
@@ -195,7 +195,7 @@ Node *read_tree (Tree_info *Info)
 
     else
     {
-        printf ("unidentifed symbol;\n");
+        printf ("unidentified symbol;\n");
 
         return POISON_PTR;
     }
@@ -211,14 +211,14 @@ Node *handle_branch_node (Tree_info *Info)
 
     if(!Info->Root)
     {
-        New_node = create_root (CURR_LINE + 1, Info);
+        New_node = create_root (CURR_LINE + OFFSET_PARENTHESES, Info);
     }
 
     else
     {
         New_node = create_node ();
 
-        New_node->name = CURR_LINE + 1;
+        New_node->name = CURR_LINE + OFFSET_PARENTHESES;
 
         New_node->Parent = Info->Curr_parent;
     }
@@ -242,7 +242,7 @@ Node *handle_end_node (Tree_info *Info)
     Node *New_node   = create_node ();
     New_node->Parent = Info->Curr_parent;
 
-    New_node->name = CURR_LINE + 1;
+    New_node->name = CURR_LINE + OFFSET_PARENTHESES;
 
     Info->curr_line++;
 
@@ -267,15 +267,15 @@ void print_tree_preorder (Node *Root)
 
 void print_tree_inorder (Node *Root)
 {
-    Node *Currand_cardode = Root;
+    Node *Curr_node = Root;
 
     printf ("(");
 
-    if(Currand_cardode->Left)  print_tree_inorder (Currand_cardode->Left);
+    if(Curr_node->Left)  print_tree_inorder (Curr_node->Left);
 
-    printf ("%s", Currand_cardode->name);
+    printf ("%s", Curr_node->name);
 
-    if(Currand_cardode->Right) print_tree_inorder (Currand_cardode->Right);
+    if(Curr_node->Right) print_tree_inorder (Curr_node->Right);
 
     printf (")");
 }
@@ -284,15 +284,15 @@ void print_tree_inorder (Node *Root)
 
 void print_tree_postorder (Node *Root)
 {
-    Node *Currand_cardode = Root;
+    Node *Curr_node = Root;
 
     printf ("(");
 
-    if(Currand_cardode->Left)  print_tree_postorder (Currand_cardode->Left);
+    if(Curr_node->Left)  print_tree_postorder (Curr_node->Left);
 
-    if(Currand_cardode->Right) print_tree_postorder (Currand_cardode->Right);
+    if(Curr_node->Right) print_tree_postorder (Curr_node->Right);
 
-    printf ("%s)", Currand_cardode->name);
+    printf ("%s)", Curr_node->name);
 }
 
 //-----------------------------------------------------------------------------
@@ -335,13 +335,13 @@ void create_tree_graph (Tree_info *Info)
 
     dot_print("cell0 ");
 
-    build_cocard_valuesections (ROOT->Left, Info);
+    build_connections (ROOT->Left, Info);
 
     dot_print("cell0 ");
 
     CURR_CELL++;
 
-    build_cocard_valuesections (ROOT->Right, Info);
+    build_connections (ROOT->Right, Info);
 
     dot_print ("}\n");
 
@@ -385,7 +385,7 @@ void create_cell (Node *Root, Tree_info *Info)
 
 //-----------------------------------------------------------------------------
 
-void build_cocard_valuesections (Node *Root, Tree_info *Info)
+void build_connections (Node *Root, Tree_info *Info)
 {
     dot_print("-> cell%d;\n", CURR_CELL);
 
@@ -397,7 +397,7 @@ void build_cocard_valuesections (Node *Root, Tree_info *Info)
 
         CURR_CELL++;
 
-        build_cocard_valuesections (Root->Left, Info);
+        build_connections (Root->Left, Info);
     }
 
     if(Root->Right)
@@ -406,7 +406,7 @@ void build_cocard_valuesections (Node *Root, Tree_info *Info)
 
         CURR_CELL++;
 
-        build_cocard_valuesections (Root->Right, Info);
+        build_connections (Root->Right, Info);
     }
 }
 
@@ -414,19 +414,19 @@ void build_cocard_valuesections (Node *Root, Tree_info *Info)
 
 //-----------------------------------------------------------------------------
 
-void tree_dtor (Node *Currand_cardode)
+void tree_dtor (Node *Curr_node)
 {
-    if(Currand_cardode->Left)
+    if(Curr_node->Left)
     {
-        tree_dtor (Currand_cardode->Left);
+        tree_dtor (Curr_node->Left);
     }
 
-    if(Currand_cardode->Right)
+    if(Curr_node->Right)
     {
-        tree_dtor (Currand_cardode->Right);
+        tree_dtor (Curr_node->Right);
     }
 
-    free (Currand_cardode);
+    free (Curr_node);
 }
 
 //-----------------------------------------------------------------------------

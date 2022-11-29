@@ -14,6 +14,7 @@ int stack_ctor_ (struct Stack *stk,     int capacity_ctor, const char* stk_name,
     (stk->Stack_info).file = file_name;
     (stk->Stack_info).line = stk_line;
     (stk->Stack_info).error_codes = 0;
+    
     (stk->Stack_info).cur_status = "OK";
 
     if (capacity_ctor >= 0)
@@ -55,7 +56,7 @@ void stack_push (struct Stack *stk, char *elem)
 
     *(char**)(stk->buffer_stk + stk->size_stk) = elem;
 
-    (stk->size_stk)++;
+    stk->size_stk++;
 
     stk->hash = calculate_hash (stk);
 }
@@ -96,7 +97,8 @@ char *stack_pop (struct Stack *stk)
 
     verificate_stack (stk, new_hash);
 
-    char *elem_del = *(char**)(stk->buffer_stk + stk->size_stk);
+    char *elem_del = *(char**)(stk->buffer_stk + stk->size_stk - 1);
+
     stk->buffer_stk[stk->size_stk - 1] = 0;
 
     stk->size_stk--;

@@ -4,41 +4,53 @@ graph [dpi = 200];
 ranksep = 1.5;       
 edge[penwidth = 10]; 
 cell0 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> Country} " ];                         
+shape=record,label = " { <ptr> animal} " ];                         
 cell1 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> south} " ];                         
+shape=record,label = " { <ptr> bird} " ];                         
 cell2 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> africa} " ];                         
+shape=record,label = " { <ptr> fig} " ];                         
 cell3 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> ihih} " ];                         
+shape=record,label = " { <ptr> sinitsa} " ];                         
 cell4 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> huh} " ];                         
+shape=record,label = " { <ptr> Vorobey} " ];                         
 cell5 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> Europe} " ];                         
+shape=record,label = " { <ptr> amogus} " ];                         
 cell6 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> there_are_people} " ];                         
+shape=record,label = " { <ptr> cool} " ];                         
 cell7 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> Animal} " ];                         
+shape=record,label = " { <ptr> check} " ];                         
 cell8 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> SDS} " ];                         
+shape=record,label = " { <ptr> mood} " ];                         
 cell9 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> kjkj} " ];                         
+shape=record,label = " { <ptr> Medved} " ];                         
 cell10 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> hj} " ];                         
+shape=record,label = " { <ptr> car} " ];                         
 cell11 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> GEGR} " ];                         
+shape=record,label = " { <ptr> made} " ];                         
 cell12 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> Town} " ];                         
+shape=record,label = " { <ptr> lada} " ];                         
+cell13 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> uaz} " ];                         
+cell14 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> das} " ];                         
+cell15 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> iod} " ];                         
+cell16 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> plane} " ];                         
 cell0 -> cell1;
 cell1 -> cell2;
-cell1 -> cell3;
-cell3 -> cell4;
-cell3 -> cell5;
-cell0 -> cell6;
+cell2 -> cell3;
+cell2 -> cell4;
+cell1 -> cell5;
+cell5 -> cell6;
 cell6 -> cell7;
 cell6 -> cell8;
-cell8 -> cell9;
-cell9 -> cell10;
-cell9 -> cell11;
-cell8 -> cell12;
+cell5 -> cell9;
+cell0 -> cell10;
+cell10 -> cell11;
+cell11 -> cell12;
+cell11 -> cell13;
+cell10 -> cell14;
+cell14 -> cell15;
+cell14 -> cell16;
 }

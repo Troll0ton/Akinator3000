@@ -37,13 +37,10 @@ enum TREE_INFO
 
 //-----------------------------------------------------------------------------
 
-typedef struct Node
+enum TREE_OFFSETS
 {
-    Node *Parent;
-    Node *Left;
-    Node *Right;
-    char *name;
-} Node;
+    OFFSET_PARENTHESES = 1,
+};
 
 //-----------------------------------------------------------------------------
 
@@ -86,7 +83,7 @@ Node      *create_root          (char *name, Tree_info *Info);
 
 Node      *insert_node          (char *name, Node *Parent, int side);
 
-void       save_tree            (Node *Currand_cardode, Tree_info *Info);
+void       save_tree            (Node *Curr_node, Tree_info *Info);
 
 Node      *read_tree            (Tree_info *Info);
 
@@ -98,7 +95,7 @@ Tree_info *tree_info_ctor_      (const char* log_file, int line);
 
 void       tree_info_dtor       (Tree_info *Info);
 
-Node      *find_node            (Node *Currand_cardode, char *name, Stack *Stk);
+Node      *find_node            (Node *Curr_node, char *name, Stack *Stk);
 
 void       print_tree_inorder   (Node *Root);
 
@@ -114,9 +111,9 @@ Node      *handle_branch_node   (Tree_info *Info);
 
 void       create_cell          (Node *Root, Tree_info *Info);
 
-void       build_cocard_valuesections    (Node *Root, Tree_info *Info);
+void       build_connections    (Node *Root, Tree_info *Info);
 
-void       tree_dtor            (Node *Currand_cardode);
+void       tree_dtor            (Node *Curr_node);
 
 //-----------------------------------------------------------------------------
 

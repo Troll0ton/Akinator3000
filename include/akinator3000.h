@@ -5,16 +5,11 @@
 
 //-----------------------------------------------------------------------------
 
-#include "../include/tree.h"
-
-//-----------------------------------------------------------------------------
-
-#define   TX_USE_SPEAK
-#include "TXLib.h"
-
-//-----------------------------------------------------------------------------
-
 #define N(suffix) NUM_OF_##suffix
+
+//-----------------------------------------------------------------------------
+
+#include "../include/tree.h"
 
 //-----------------------------------------------------------------------------
 
@@ -24,30 +19,34 @@
 
 enum AKINATOR_MODES
 {
-    GUEEcard_namesING,
+    GUESSING,
     SEARCHING,
     COMPARISON,
 };
 
 //-----------------------------------------------------------------------------
 
-void choose_mode            ();
+void  choose_mode            ();
 
-void searching_mode         (Tree_info *Info);
+void  searching_mode         (Tree_info *Info);
 
-void guecard_namesing_mode          (Tree_info *Info);
+void  guessing_mode          (Tree_info *Info);
 
-void comparison_mode        (Tree_info *Info);
+void  comparison_mode        (Tree_info *Info);
 
-void asking                 (Tree_info *Info);
+void  asking                 (Tree_info *Info);
 
-void handle_yes_answer      (Tree_info *Info);
+void  handle_yes_answer      (Tree_info *Info);
 
-void handle_no_answer       (Tree_info *Info);
+void  handle_no_answer       (Tree_info *Info);
 
-void handle_userand_cardode       (Tree_info *Info);
+void  handle_user_node (Tree_info *Info);
 
-void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2);
+void  handle_ancestor_stacks (Stack *Stk1, Stack *Stk2);
+
+void  speak_up               (char *text);
+
+void  speak_and_print        (char *text);
 
 //-----------------------------------------------------------------------------
 
