@@ -8,49 +8,31 @@ shape=record,label = " { <ptr> animal} " ];
 cell1 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> bird} " ];                         
 cell2 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> fig} " ];                         
+shape=record,label = " { <ptr> eagle} " ];                         
 cell3 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> sinitsa} " ];                         
+shape=record,label = " { <ptr> fish} " ];                         
 cell4 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> Vorobey} " ];                         
-cell5 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> amogus} " ];                         
-cell6 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> cool} " ];                         
-cell7 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> check} " ];                         
-cell8 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> mood} " ];                         
-cell9 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> Medved} " ];                         
-cell10 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> car} " ];                         
-cell11 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> made} " ];                         
-cell12 [style = filled, color = black, fillcolor = paleturquoise1,
+cell5 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> big} " ];                         
+cell6 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> kamaz} " ];                         
+cell7 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> lada} " ];                         
-cell13 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> uaz} " ];                         
-cell14 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> das} " ];                         
-cell15 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> iod} " ];                         
-cell16 [style = filled, color = black, fillcolor = paleturquoise1,
+cell8 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> can} " ];                         
+cell9 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> ship} " ];                         
+cell10 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> plane} " ];                         
 cell0 -> cell1;
 cell1 -> cell2;
-cell2 -> cell3;
-cell2 -> cell4;
-cell1 -> cell5;
+cell1 -> cell3;
+cell0 -> cell4;
+cell4 -> cell5;
 cell5 -> cell6;
-cell6 -> cell7;
-cell6 -> cell8;
-cell5 -> cell9;
-cell0 -> cell10;
-cell10 -> cell11;
-cell11 -> cell12;
-cell11 -> cell13;
-cell10 -> cell14;
-cell14 -> cell15;
-cell14 -> cell16;
+cell5 -> cell7;
+cell4 -> cell8;
+cell8 -> cell9;
+cell8 -> cell10;
 }

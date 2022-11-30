@@ -43,17 +43,18 @@ void choose_mode ()
 
     tree_dump (Info);
 
-    tree_dtor (Info->Root);
+    Node *Root = Info->Root;
 
     tree_info_dtor (Info);
+
+    tree_dtor (Root);
 }
 
 //-----------------------------------------------------------------------------
 
 void searching_mode (Tree_info *Info)
 {
-    speak_and_print ("HELLO WORLD! It is searching mode\n\
-                     Input name:\n\n");
+    speak_and_print ("HELLO WORLD! It is searching mode. Input name:\n\n");
 
     char name[MAX_LEN] = "";
 
@@ -64,7 +65,7 @@ void searching_mode (Tree_info *Info)
 
     speak_and_print ("description: ");
 
-    if(find_node (Info->Root, name, &Stk))
+    if(search_node (Info->Root, name, &Stk))
     {
         while(Stk.size_stk > 0)
         {
@@ -88,15 +89,18 @@ void guessing_mode (Tree_info *Info)
 
     Info->Curr_parent = Info->Root;
 
-    asking (Info);
+    ask_user (Info);
 }
 
 //-----------------------------------------------------------------------------
 
-void asking (Tree_info *Info)
+void ask_user (Tree_info *Info)
 {
-    speak_and_print ("Is it ");
-    speak_and_print (Info->Curr_parent->name);
+    char text[MAX_LEN] = "Is it ";
+
+    strcat (text, Info->Curr_parent->name);
+
+    speak_and_print (text);
 
     if(Info->Curr_parent->Left)
     {
@@ -111,31 +115,31 @@ void asking (Tree_info *Info)
 
     if(stricmp (answer, "YES") == 0)
     {
-        handle_yes_answer (Info);
+        handle_positive_answer (Info);
     }
 
     else if(stricmp (answer, "NO") == 0)
     {
-        handle_no_answer (Info);
+        handle_negative_answer (Info);
     }
 
     else
     {
         speak_and_print ("I do not understand you\n");
 
-        asking (Info);
+        ask_user (Info);
     }
 }
 
 //-----------------------------------------------------------------------------
 
-void handle_yes_answer (Tree_info *Info)
+void handle_positive_answer (Tree_info *Info)
 {
     Info->Curr_parent = Info->Curr_parent->Left;
 
     if(Info->Curr_parent)
     {
-        asking (Info);
+        ask_user (Info);
     }
 
     else
@@ -146,13 +150,13 @@ void handle_yes_answer (Tree_info *Info)
 
 //-----------------------------------------------------------------------------
 
-void handle_no_answer (Tree_info *Info)
+void handle_negative_answer (Tree_info *Info)
 {
     if(Info->Curr_parent->Right)
     {
         Info->Curr_parent = Info->Curr_parent->Right;
 
-        asking (Info);
+        ask_user (Info);
     }
 
     else
@@ -201,8 +205,8 @@ void comparison_mode (Tree_info *Info)
     Stack Stk2 = { 0 };
     stack_ctor (&Stk2, SIZE_INIT);
 
-    Node *First_node  = find_node (Info->Root, name1, &Stk1);
-    Node *Second_node = find_node (Info->Root, name2, &Stk2);
+    Node *First_node  = search_node (Info->Root, name1, &Stk1);
+    Node *Second_node = search_node (Info->Root, name2, &Stk2);
 
     if(CORRECT_INPUT)
     {
@@ -243,22 +247,24 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
         else break;
     }
 
-    speak_and_print (", but first is");
+    printf ("\n");
+    speak_and_print ("But first is ");
 
     while(Stk1->size_stk > 0)
     {
         speak_and_print (first_description);
 
-        first_description = (stack_pop (Stk1))->name;
+        first_description = stack_pop(Stk1)->name;
     }
 
-    speak_and_print (", and second: ");
+    printf ("\n");
+    speak_and_print ("And the second ");
 
     while(Stk2->size_stk > 0)
     {
         speak_and_print (second_description);
 
-        second_description = (stack_pop (Stk2))->name;
+        second_description = stack_pop(Stk2)->name;
     }
 }
 

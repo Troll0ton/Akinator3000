@@ -34,13 +34,13 @@ void  guessing_mode          (Tree_info *Info);
 
 void  comparison_mode        (Tree_info *Info);
 
-void  asking                 (Tree_info *Info);
+void  ask_user               (Tree_info *Info);
 
-void  handle_yes_answer      (Tree_info *Info);
+void  handle_positive_answer (Tree_info *Info);
 
-void  handle_no_answer       (Tree_info *Info);
+void  handle_negative_answer (Tree_info *Info);
 
-void  handle_user_node (Tree_info *Info);
+void  handle_user_node       (Tree_info *Info);
 
 void  handle_ancestor_stacks (Stack *Stk1, Stack *Stk2);
 

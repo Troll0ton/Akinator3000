@@ -49,18 +49,13 @@ typedef struct Tree_info
     FILE *file_tree;
     FILE *file_dump;
     FILE *file_dot;
-
-    int   graph_num;
-
     Line *Text;
     File *File_input;
-
     Node *Root;
     Node *Curr_parent;
-
     int   curr_line;
     int   curr_cell;
-    int   flag_stop;
+    int   graph_num;
 
     const char *name;
     const char *log_file;
@@ -95,7 +90,7 @@ Tree_info *tree_info_ctor_      (const char* log_file, int line);
 
 void       tree_info_dtor       (Tree_info *Info);
 
-Node      *find_node            (Node *Curr_node, char *name, Stack *Stk);
+Node      *search_node          (Node *Curr_node, char *name, Stack *Stk);
 
 void       print_tree_inorder   (Node *Root);
 

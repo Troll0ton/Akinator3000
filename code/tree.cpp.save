@@ -98,13 +98,18 @@ Node *insert_node (char *name, Node *Parent, int side)
     {
         Parent->Right = New_node;
     }
+    
+    else
+    {
+        printf ("ERROR - insert unknown side!\n");
+    }
 
     return New_node;
 }
 
 //-----------------------------------------------------------------------------
 
-Node *find_node (Node *Curr_node, char *name, Stack *Stk)
+Node *search_node (Node *Curr_node, char *name, Stack *Stk)
 {
     if(!Curr_node)
     {
@@ -118,8 +123,8 @@ Node *find_node (Node *Curr_node, char *name, Stack *Stk)
         return Curr_node;
     }
 
-    Node* Find_left  = find_node (Curr_node->Left,  name, Stk);
-    Node* Find_right = find_node (Curr_node->Right, name, Stk);
+    Node* Find_left  = search_node (Curr_node->Left,  name, Stk);
+    Node* Find_right = search_node (Curr_node->Right, name, Stk);
 
     if(Find_left)
     {
@@ -178,16 +183,16 @@ Node *read_tree (Tree_info *Info)
 
     if(sym == '{')
     {
-        char *closing_parentheses_pos = strchr (CURR_LINE, '}');
+        char *parenth_pos = strchr (CURR_LINE, '}');
 
-        if(closing_parentheses_pos == NULL)
+        if(parenth_pos == NULL)
         {
             return handle_branch_node (Info);
         }
 
         else
         {
-            *closing_parentheses_pos = '\0';
+            *parenth_pos = '\0';
 
             return handle_end_node (Info);
         }
@@ -211,14 +216,14 @@ Node *handle_branch_node (Tree_info *Info)
 
     if(!Info->Root)
     {
-        New_node = create_root (CURR_LINE + 1, Info);
+        New_node = create_root (CURR_LINE + OFFSET_PARENTHESES, Info);
     }
 
     else
     {
         New_node = create_node ();
 
-        New_node->name = CURR_LINE + 1;
+        New_node->name = CURR_LINE + OFFSET_PARENTHESES;
 
         New_node->Parent = Info->Curr_parent;
     }
@@ -242,7 +247,7 @@ Node *handle_end_node (Tree_info *Info)
     Node *New_node   = create_node ();
     New_node->Parent = Info->Curr_parent;
 
-    New_node->name = CURR_LINE + 1;
+    New_node->name = CURR_LINE + OFFSET_PARENTHESES;
 
     Info->curr_line++;
 
@@ -355,7 +360,7 @@ void create_tree_graph (Tree_info *Info)
 
     Info->graph_num++;
 
-    system  (dot_name);
+    system (dot_name);
 
     fprintf (Info->file_dump, "%s", img_name);
 }
