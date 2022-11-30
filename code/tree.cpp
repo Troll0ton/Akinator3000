@@ -14,6 +14,14 @@ Tree_info *tree_info_ctor_ (const char* log_file, int line)
     Info->file_tree = fopen ("../files/tree.txt",      "r");
     Info->file_dump = fopen ("../dump/tree_dump.html", "w+");
 
+    if(Info->file_tree == NULL ||
+       Info->file_dump == NULL   )
+    {
+        printf ("|ERROR - file opening|\n");
+
+        return NULL;
+    }
+
     Info->File_input = file_reader (Info->file_tree);
     Info->Text = lines_separator (Info->File_input);
 
@@ -197,11 +205,9 @@ Node *read_tree (Tree_info *Info)
     else
     {
         printf ("unidentified symbol;\n");
-
-        return POISON_PTR;
     }
 
-    printf ("\n");
+    return NULL;
 }
 
 //-----------------------------------------------------------------------------

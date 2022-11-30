@@ -236,18 +236,18 @@ void comparison_mode (Tree_info *Info)
 
 void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
 {
-    char *first_description  = NULL;
-    char *second_description = NULL;
+    char *first_name  = NULL;
+    char *second_name = NULL;
 
     while(Stk1->size_stk > 0 && Stk2->size_stk > 0)
     {
-        first_description  = (stack_pop (Stk1))->name;
-        second_description = (stack_pop (Stk2))->name;
+        first_name  = (stack_pop (Stk1))->name;
+        second_name = (stack_pop (Stk2))->name;
 
-        if(first_description == second_description)
+        if(first_name == second_name)
         {
             speak_and_print ("they are same in: ");
-            speak_and_print (first_description);
+            speak_and_print (first_name);
 
             printf ("\n");
         }
@@ -264,9 +264,9 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
 
     while(Stk1->size_stk > 0)
     {
-        speak_and_print (first_description);
+        speak_and_print (first_name);
 
-        first_description = stack_pop(Stk1)->name;
+        first_name = stack_pop(Stk1)->name;
     }
 
     printf ("\n");
@@ -278,9 +278,9 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
 
     while(Stk2->size_stk > 0)
     {
-        speak_and_print (second_description);
+        speak_and_print (second_name);
 
-        second_description = stack_pop(Stk2)->name;
+        second_name = stack_pop(Stk2)->name;
     }
 }
 
