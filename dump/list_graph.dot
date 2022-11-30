@@ -20,10 +20,14 @@ shape=record,label = " { <ptr> fish} " ];
 cell7 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> boat} " ];                         
 cell8 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> plane} " ];                         
-cell9 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> fly in sky} " ];                         
+cell9 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> plane} " ];                         
 cell10 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> under ground} " ];                         
+cell11 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> metro} " ];                         
+cell12 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> car} " ];                         
 cell0 -> cell1;
 cell1 -> cell2;
@@ -35,4 +39,6 @@ cell5 -> cell7;
 cell4 -> cell8;
 cell8 -> cell9;
 cell8 -> cell10;
+cell10 -> cell11;
+cell10 -> cell12;
 }

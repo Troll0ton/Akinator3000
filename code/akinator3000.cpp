@@ -100,7 +100,7 @@ void guessing_mode (Tree_info *Info)
 
 void ask_user (Tree_info *Info)
 {
-    char text[MAX_LEN] = "Is it ";
+    char text[MAX_LEN] = "It is ";
 
     strcat (text, Info->Curr_parent->name);
 

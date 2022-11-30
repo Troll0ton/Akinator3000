@@ -67,8 +67,6 @@ void searching_mode (Tree_info *Info)
 
     speak_and_print ("description: ");
 
-    Info->ancestor_flag = 0;
-    
     if(search_node (Info->Root, name, &Stk))
     {
         while(Stk.size_stk > 0)
@@ -212,10 +210,7 @@ void comparison_mode (Tree_info *Info)
     Stack Stk2 = { 0 };
     stack_ctor (&Stk2, SIZE_INIT);
 
-    Info->ancestor_flag = 0;
     Node *First_node  = search_node (Info->Root, name1, &Stk1);
-    
-    Info->ancestor_flag = 0;
     Node *Second_node = search_node (Info->Root, name2, &Stk2);
 
     if(CORRECT_INPUT)
@@ -261,7 +256,11 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
     }
 
     printf ("\n");
-    speak_and_print ("But first is ");
+
+    if(Stk1->size_stk > 0)
+    {
+        speak_and_print ("But first is ");
+    }
 
     while(Stk1->size_stk > 0)
     {
@@ -271,7 +270,11 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
     }
 
     printf ("\n");
-    speak_and_print ("And the second ");
+
+    if(Stk2->size_stk > 0)
+    {
+        speak_and_print ("And the second ");
+    }
 
     while(Stk2->size_stk > 0)
     {

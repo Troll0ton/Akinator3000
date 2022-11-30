@@ -8,9 +8,12 @@
 {fish}
 {boat}
 }
-{plane
-{fly in sky}
+{fly in sky
+{plane}
+{under ground
+{metro}
 {car}
+}
 }
 }
 }
