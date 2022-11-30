@@ -6,6 +6,8 @@ void choose_mode ()
 {
     Tree_info *Info = tree_info_ctor();
 
+    while (getchar () != '\n') { }
+
     read_tree (Info);
 
     printf          ("________________________________________________________________________\n");
@@ -169,14 +171,14 @@ void handle_negative_answer (Tree_info *Info)
 
 void handle_user_node (Tree_info *Info)
 {
-    char *description = (char*) calloc (MAX_LEN, sizeof (char));
-    char *difference  = (char*) calloc (MAX_LEN, sizeof (char));
+    char *description = NULL;
+    char *difference  = NULL;
 
     speak_and_print ("I do not know this thing! Enter your description:\n");
-    scanf           ("%s", description);
+    description = get_line ();
 
     speak_and_print ("Enter your difference:\n");
-    scanf           ("%s", difference);
+    difference = get_line ();
 
     char *old_name = Info->Curr_parent->name;
 

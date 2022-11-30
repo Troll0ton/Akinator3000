@@ -19,7 +19,6 @@ Tree_info *tree_info_ctor_ (const char* log_file, int line)
 
     Info->curr_line = 0;
     Info->curr_cell = 0;
-    Info->flag_stop = 0;
     Info->graph_num = 0;
 
     return Info;
@@ -39,7 +38,6 @@ void tree_info_dtor (Tree_info *Info)
 
     Info->curr_line = DELETED_PAR;
     Info->curr_cell = DELETED_PAR;
-    Info->flag_stop = DELETED_PAR;
 
     free (Info);
 }
@@ -98,7 +96,7 @@ Node *insert_node (char *name, Node *Parent, int side)
     {
         Parent->Right = New_node;
     }
-    
+
     else
     {
         printf ("ERROR - insert unknown side!\n");
@@ -431,6 +429,7 @@ void tree_dtor (Node *Curr_node)
         tree_dtor (Curr_node->Right);
     }
 
+    free (Curr_node->na);
     free (Curr_node);
 }
 

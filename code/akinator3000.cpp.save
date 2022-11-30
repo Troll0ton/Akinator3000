@@ -44,8 +44,6 @@ void choose_mode ()
     tree_dump (Info);
 
     Node *Root = Info->Root;
-    
-    printf (;
 
     tree_info_dtor (Info);
 
@@ -260,7 +258,7 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
     }
 
     printf ("\n");
-    speak_and_print ("And second: ");
+    speak_and_print ("And the second ");
 
     while(Stk2->size_stk > 0)
     {
@@ -291,6 +289,32 @@ void speak_and_print (char *text)
     printf ("%s ", text);
 
     speak_up (text);
+}
+
+//-----------------------------------------------------------------------------
+
+void get_line ()
+{
+    char kek[100] = "";
+    
+    char *pip = kek;
+    
+    char n = 0;
+    
+    while(1)
+    {
+        n = getchar ();
+        
+        if(n == '.') break;
+        
+        *pip = n;
+        
+        pip++;
+    }
+    
+    printf ("%s", kek);
+    
+    return 0;
 }
 
 //-----------------------------------------------------------------------------

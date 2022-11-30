@@ -113,3 +113,34 @@ int file_printer (Line *Text, int num_of_lines, FILE *file)
 }
 
 //-----------------------------------------------------------------------------
+
+char *get_line ()
+{
+    char *kek = (char*) calloc (100, sizeof (char));
+
+    char *pip = kek;
+
+    char n = 0;
+
+    while (getchar () != '\"') { }
+
+    while(1)
+    {
+        n = getchar ();
+
+        if(n == '\"')
+        {
+            while (getchar () != '\n') { }
+
+            break;
+        }
+
+        *pip = n;
+
+        pip++;
+    }
+
+    return kek;
+}
+
+//-----------------------------------------------------------------------------

@@ -1,16 +1,10 @@
 {animal
-{bird
-{eagle}
-{fish}
+{can fly
+{bird}
+{cat}
 }
-{car
-{big
-{kamaz}
-{lada}
-}
-{can
-{ship}
-{plane}
-}
+{can float
+{boat}
+{car}
 }
 }

@@ -6,33 +6,21 @@ edge[penwidth = 10];
 cell0 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> animal} " ];                         
 cell1 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> bird} " ];                         
+shape=record,label = " { <ptr> can fly} " ];                         
 cell2 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> eagle} " ];                         
+shape=record,label = " { <ptr> bird} " ];                         
 cell3 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> fish} " ];                         
+shape=record,label = " { <ptr> cat} " ];                         
 cell4 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> car} " ];                         
+shape=record,label = " { <ptr> can float} " ];                         
 cell5 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> big} " ];                         
+shape=record,label = " { <ptr> boat} " ];                         
 cell6 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> kamaz} " ];                         
-cell7 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> lada} " ];                         
-cell8 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> can} " ];                         
-cell9 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> ship} " ];                         
-cell10 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> plane} " ];                         
+shape=record,label = " { <ptr> car} " ];                         
 cell0 -> cell1;
 cell1 -> cell2;
 cell1 -> cell3;
 cell0 -> cell4;
 cell4 -> cell5;
-cell5 -> cell6;
-cell5 -> cell7;
-cell4 -> cell8;
-cell8 -> cell9;
-cell8 -> cell10;
+cell4 -> cell6;
 }

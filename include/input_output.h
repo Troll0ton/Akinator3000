@@ -90,6 +90,8 @@ int   get_file_size   (FILE *file);
 
 int   file_printer    (Line *Text, int num_of_lines, FILE *file);
 
+char *get_line        ();
+
 //-----------------------------------------------------------------------------
 
 const Option cmd_args[] =
