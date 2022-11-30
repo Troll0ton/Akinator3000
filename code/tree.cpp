@@ -133,8 +133,6 @@ Node *search_node (Node *Curr_node, char *name, Stack *Stk)
 
     if(Find_right)
     {
-        stack_push (Stk, Curr_node);
-
         return Find_right;
     }
 
@@ -428,6 +426,8 @@ void tree_dtor (Node *Curr_node)
     {
         tree_dtor (Curr_node->Right);
     }
+
+    free (Curr_node->name);
 
     free (Curr_node);
 }

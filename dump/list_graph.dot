@@ -14,13 +14,25 @@ shape=record,label = " { <ptr> cat} " ];
 cell4 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> can float} " ];                         
 cell5 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> boat} " ];                         
+shape=record,label = " { <ptr> alive and alive} " ];                         
 cell6 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> fish} " ];                         
+cell7 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> boat} " ];                         
+cell8 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> plane} " ];                         
+cell9 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> fly in sky} " ];                         
+cell10 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> car} " ];                         
 cell0 -> cell1;
 cell1 -> cell2;
 cell1 -> cell3;
 cell0 -> cell4;
 cell4 -> cell5;
-cell4 -> cell6;
+cell5 -> cell6;
+cell5 -> cell7;
+cell4 -> cell8;
+cell8 -> cell9;
+cell8 -> cell10;
 }

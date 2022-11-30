@@ -47,9 +47,9 @@ void choose_mode ()
 
     Node *Root = Info->Root;
 
-    tree_info_dtor (Info);
-
     tree_dtor (Root);
+
+    tree_info_dtor (Info);
 }
 
 //-----------------------------------------------------------------------------
@@ -58,9 +58,9 @@ void searching_mode (Tree_info *Info)
 {
     speak_and_print ("HELLO WORLD! It is searching mode. Input name:\n\n");
 
-    char name[MAX_LEN] = "";
+    char *name = NULL;
 
-    scanf ("%s", name);
+    name = get_line ();
 
     Stack Stk = { 0 };
     stack_ctor (&Stk, SIZE_INIT);
@@ -79,6 +79,8 @@ void searching_mode (Tree_info *Info)
     {
         speak_and_print ("This name does not exists!\n");
     }
+
+    free (name);
 
     stack_dtor (&Stk);
 }
@@ -196,10 +198,11 @@ void comparison_mode (Tree_info *Info)
 {
     speak_and_print ("HELLO WORLD! It is comparison mode. Input names:\n\n");
 
-    char name1[MAX_LEN] = "";
-    char name2[MAX_LEN] = "";
+    char *name1 = NULL;
+    char *name2 = NULL;
 
-    scanf ("%s %s", name1, name2);
+    name1 = get_line ();
+    name2 = get_line ();
 
     Stack Stk1 = { 0 };
     stack_ctor (&Stk1, SIZE_INIT);
@@ -219,6 +222,9 @@ void comparison_mode (Tree_info *Info)
     {
         speak_and_print ("One of names was not found!\n");
     }
+
+    free (name1);
+    free (name2);
 
     stack_dtor (&Stk1);
     stack_dtor (&Stk2);
@@ -250,7 +256,11 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
     }
 
     printf ("\n");
-    speak_and_print ("But first is ");
+
+    if(Stk1->size_stk > 0)
+    {
+        speak_and_print ("But first is ");
+    }
 
     while(Stk1->size_stk > 0)
     {
@@ -260,7 +270,11 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
     }
 
     printf ("\n");
-    speak_and_print ("And the second ");
+
+    if(Stk2->size_stk > 0)
+    {
+        speak_and_print ("And the second ");
+    }
 
     while(Stk2->size_stk > 0)
     {

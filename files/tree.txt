@@ -4,7 +4,13 @@
 {cat}
 }
 {can float
+{alive and alive
+{fish}
 {boat}
+}
+{plane
+{fly in sky}
 {car}
+}
 }
 }
