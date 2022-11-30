@@ -126,18 +126,13 @@ Node *search_node (Node *Curr_node, char *name, Stack *Stk)
 
     if(Find_left)
     {
-        if(!ancestor_flag)
-        {
-            stack_push (Stk, Curr_node);
-        }
+        stack_push (Stk, Curr_node);
 
         return Find_left;
     }
 
     if(Find_right)
     {
-        ancestor_flag++;
-        
         return Find_right;
     }
 
@@ -202,11 +197,9 @@ Node *read_tree (Tree_info *Info)
     else
     {
         printf ("unidentified symbol;\n");
-
-        return POISON_PTR;
     }
 
-    printf ("\n");
+    return NULL;
 }
 
 //-----------------------------------------------------------------------------
