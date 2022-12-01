@@ -11,6 +11,9 @@
 
 #include "../include/tree.h"
 
+// #include "tree.h"
+// gcc -I./include main.cpp
+
 //-----------------------------------------------------------------------------
 
 #define DELETED_PAR -1

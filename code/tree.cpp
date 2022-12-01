@@ -52,6 +52,8 @@ void tree_info_dtor (Tree_info *Info)
 
 //-----------------------------------------------------------------------------
 
+// static
+
 Node *create_node ()
 {
     Node *New_node = (Node*) calloc (1, sizeof (Node));
@@ -74,6 +76,8 @@ Node *create_node ()
 }
 
 //-----------------------------------------------------------------------------
+
+//
 
 Node *create_root (char *name, Tree_info *Info)
 {
@@ -131,6 +135,8 @@ Node *search_node (Node *Curr_node, char *name, Stack *Stk)
 
     Node* Find_left  = search_node (Curr_node->Left,  name, Stk);
     Node* Find_right = search_node (Curr_node->Right, name, Stk);
+
+    //
 
     if(Find_left)
     {
@@ -333,6 +339,8 @@ void create_tree_graph (Tree_info *Info)
                "graph [dpi = 200];   \n"
                "ranksep = 1.5;       \n"
                "edge[penwidth = 10]; \n");
+
+    // graphviz_node
 
     CURR_CELL = 0;
 

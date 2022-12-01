@@ -98,6 +98,10 @@ void guessing_mode (Tree_info *Info)
 
 //-----------------------------------------------------------------------------
 
+
+// Node* curr_node
+// ??
+
 void ask_user (Tree_info *Info)
 {
     char text[MAX_LEN] = "It is ";
@@ -116,6 +120,8 @@ void ask_user (Tree_info *Info)
     char answer[MAX_LEN] = "";
 
     scanf ("%s", answer);
+
+    // handle_answer()
 
     if(stricmp (answer, "YES") == 0)
     {
@@ -236,23 +242,26 @@ void comparison_mode (Tree_info *Info)
 
 void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
 {
-    char *first_name  = NULL;
-    char *second_name = NULL;
+    char *first_description  = NULL;
+    char *second_description = NULL;
 
     while(Stk1->size_stk > 0 && Stk2->size_stk > 0)
     {
-        first_name  = (stack_pop (Stk1))->name;
-        second_name = (stack_pop (Stk2))->name;
+        first_description  = (stack_pop (Stk1))->name;
+        second_description = (stack_pop (Stk2))->name;
 
-        if(first_name == second_name)
+        if(first_description == second_description)
         {
             speak_and_print ("they are same in: ");
-            speak_and_print (first_name);
+            speak_and_print (first_description);
 
             printf ("\n");
         }
 
-        else break;
+        else
+        {
+            break;
+        }
     }
 
     printf ("\n");
@@ -264,9 +273,9 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
 
     while(Stk1->size_stk > 0)
     {
-        speak_and_print (first_name);
+        speak_and_print (first_description);
 
-        first_name = stack_pop(Stk1)->name;
+        first_description = stack_pop(Stk1)->name;
     }
 
     printf ("\n");
@@ -278,9 +287,9 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
 
     while(Stk2->size_stk > 0)
     {
-        speak_and_print (second_name);
+        speak_and_print (second_description);
 
-        second_name = stack_pop(Stk2)->name;
+        second_description = stack_pop(Stk2)->name;
     }
 }
 
@@ -288,10 +297,12 @@ void handle_ancestor_stacks (Stack *Stk1, Stack *Stk2)
 
 void speak_up (char *text)
 {
+    // static '\0'
     char espeak_text[MAX_LEN] = "";
 
     strcpy (espeak_text, "espeak \"");
 
+//  strncat(,,
     strcat (espeak_text, text);
     strcat (espeak_text, "\"");
 

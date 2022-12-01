@@ -8,37 +8,43 @@ shape=record,label = " { <ptr> animal} " ];
 cell1 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> can fly} " ];                         
 cell2 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> bird} " ];                         
+shape=record,label = " { <ptr> no feathers} " ];                         
 cell3 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> cat} " ];                         
+shape=record,label = " { <ptr> insect} " ];                         
 cell4 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> can float} " ];                         
+shape=record,label = " { <ptr> bird} " ];                         
 cell5 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> alive and alive} " ];                         
+shape=record,label = " { <ptr> cat} " ];                         
 cell6 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> fish} " ];                         
+shape=record,label = " { <ptr> can float} " ];                         
 cell7 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> boat} " ];                         
+shape=record,label = " { <ptr> alive and alive} " ];                         
 cell8 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> fly in sky} " ];                         
+shape=record,label = " { <ptr> fish} " ];                         
 cell9 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> plane} " ];                         
+shape=record,label = " { <ptr> boat} " ];                         
 cell10 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> under ground} " ];                         
+shape=record,label = " { <ptr> fly in sky} " ];                         
 cell11 [style = filled, color = black, fillcolor = paleturquoise1,
-shape=record,label = " { <ptr> metro} " ];                         
+shape=record,label = " { <ptr> plane} " ];                         
 cell12 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> under ground} " ];                         
+cell13 [style = filled, color = black, fillcolor = paleturquoise1,
+shape=record,label = " { <ptr> metro} " ];                         
+cell14 [style = filled, color = black, fillcolor = paleturquoise1,
 shape=record,label = " { <ptr> car} " ];                         
 cell0 -> cell1;
 cell1 -> cell2;
-cell1 -> cell3;
-cell0 -> cell4;
-cell4 -> cell5;
-cell5 -> cell6;
-cell5 -> cell7;
-cell4 -> cell8;
-cell8 -> cell9;
-cell8 -> cell10;
+cell2 -> cell3;
+cell2 -> cell4;
+cell1 -> cell5;
+cell0 -> cell6;
+cell6 -> cell7;
+cell7 -> cell8;
+cell7 -> cell9;
+cell6 -> cell10;
 cell10 -> cell11;
 cell10 -> cell12;
+cell12 -> cell13;
+cell12 -> cell14;
 }

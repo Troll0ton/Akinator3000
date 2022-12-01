@@ -14,6 +14,14 @@ Tree_info *tree_info_ctor_ (const char* log_file, int line)
     Info->file_tree = fopen ("../files/tree.txt",      "r");
     Info->file_dump = fopen ("../dump/tree_dump.html", "w+");
 
+    if(Info->file_tree == NULL ||
+       Info->file_dump == NULL   )
+    {
+        printf ("|ERROR - file opening|\n");
+
+        return NULL;
+    }
+
     Info->File_input = file_reader (Info->file_tree);
     Info->Text = lines_separator (Info->File_input);
 
@@ -44,6 +52,8 @@ void tree_info_dtor (Tree_info *Info)
 
 //-----------------------------------------------------------------------------
 
+// static
+
 Node *create_node ()
 {
     Node *New_node = (Node*) calloc (1, sizeof (Node));
@@ -66,6 +76,8 @@ Node *create_node ()
 }
 
 //-----------------------------------------------------------------------------
+
+//
 
 Node *create_root (char *name, Tree_info *Info)
 {
@@ -123,6 +135,8 @@ Node *search_node (Node *Curr_node, char *name, Stack *Stk)
 
     Node* Find_left  = search_node (Curr_node->Left,  name, Stk);
     Node* Find_right = search_node (Curr_node->Right, name, Stk);
+    
+    // _left
 
     if(Find_left)
     {

@@ -115,6 +115,7 @@ const struct Error_info error_arr[]
 
 //-----------------------------------------------------------------------------
 
+
 int     stack_ctor_      (struct Stack *stk,     int capacity_ctor, const char* stk_name,
                           const char* file_name, int stk_line                            );
 void    stack_dtor       (Stack *stk);
